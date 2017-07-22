@@ -7,6 +7,11 @@ code included, but it should be clearly marked as such. This license also
 doesn't cover other repositories included via git submodules - see those
 repositories for the correct licensing terms.
 
+## Subdirectories
+
+To keep things simple, dotfiles in subdirectories are deployed by replacing
+the slash in the filename with U+2571 - a unicode box drawing symbol (╱)
+
 ## Compatiblity
 
 These files are used on Linux systems most of the time. Once upon a time, the

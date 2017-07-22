@@ -1,0 +1,26 @@
+[user]
+	name = Tobias Gruetzmacher
+	email = tobias-git@23.gs
+	signingkey = 0EBD3CD637B2EE85
+[color]
+	ui = auto
+[github]
+	user = TobiX
+[core]
+	pager = less
+	autocrlf = input
+[credential]
+	helper = store
+[push]
+	default = simple
+[alias]
+	akey = annex examinekey --format='.git/annex/objects/${hashdirmixed}${key}/${key}\n'
+	timeline = log --oneline --graph --decorate
+[rerere]
+	enabled = true
+[diff]
+	tool = kdiff3
+[difftool "idiff"]
+	cmd = diff -i $LOCAL $REMOTE
+[include]
+	file = ~/doc/secret/git.conf

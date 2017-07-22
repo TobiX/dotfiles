@@ -1,0 +1,70 @@
+Include ~/doc/secret/ssh_config
+
+Host eisler*
+	HostName eisler.nettworks.org
+	User tobig
+
+Host kos-mos*
+	HostName kos-mos.fritz.box
+	Port 6451
+	ForwardX11 yes
+	Compression no
+
+Host phone
+	HostName 192.168.0.202
+	User root
+	StrictHostKeyChecking no
+	UserKnownHostsFile /dev/null
+
+Host weltarchiv*
+	User tobix
+
+Host nibbler*
+	Compression no
+
+Host hermes*
+	User root
+
+Host *gnu.org
+	User TobiG
+
+Host *.sf.net
+	User tobig
+
+Host w8n.koeln.ccc.de
+	Port 2222
+
+Host fork
+	User tobix
+
+Host ssp2*
+	Hostname ssp2.23.gs
+	Port 6451
+	User root
+
+Host play.23.gs
+	Port 6451
+	LocalForward 5900 localhost:5901
+
+Host may
+	Port 6451
+
+Host armbuild
+	Hostname 127.0.0.1
+	Port 2222
+
+Host *
+	Compression yes
+	ServerAliveInterval 30
+	ServerAliveCountMax 3
+	#ForwardX11Trusted no
+	HashKnownHosts no
+	CheckHostIP no
+	VisualHostKey yes
+	ControlMaster auto
+	ControlPath ~/.cache/ssh-master-%h-%p-%r
+	ControlPersist 1
+	PKCS11Provider /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
+	UseRoaming no
+
+# vim: set ft=sshconfig:
