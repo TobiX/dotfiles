@@ -1,0 +1,44 @@
+URxvt.geometry: 120x45
+
+URxvt.pointerBlank: true
+URxvt.pointerBlankDelay: 5
+
+URxvt.visualBell: true
+URxvt.saveLines: 10000
+URxvt.scrollTtyOutput: false
+URxvt.scrollTtyKeypress: true
+URxvt.scrollBar_right: true
+URxvt.perl-ext-common: default,matcher,tabbed
+URxvt.url-launcher: /usr/bin/x-www-browser
+URxvt.matcher.button: 1
+
+// Colors from http://www.enricozini.org/2014/debian/terminal-emulators/
+URxvt.foreground: #aaaaaa
+URxvt.background: black
+URxvt.color0: black
+URxvt.color1: #aa0000
+URxvt.color2: #00aa00
+URxvt.color3: #aa5500
+URxvt.color4: #0000aa
+URxvt.color5: #aa00aa
+URxvt.color6: #00aaaa
+URxvt.color7: #aaaaaa
+URxvt.color8: #555555
+URxvt.color9: #ff5555
+URxvt.color10: #55ff55
+URxvt.color11: #ffff55
+URxvt.color12: #5555ff
+URxvt.color13: #ff55ff
+URxvt.color14: #55ffff
+URxvt.color15: #ffffff
+
+
+#if WIDTH > 800
+URxvt.font: xft:Terminus:size=10:antialias=true,\
+	xft:Bitstream Vera Sans Mono:size=10:antialias=true
+#else
+URxvt.font: xft:Terminus:size=9:antialias=true,
+	xft:Bitstream Vera Sans Mono:size=9:antialias=true
+#endif
+URxvt.print-pipe: cat > $(mktemp urxvt.XXXXXX)
+

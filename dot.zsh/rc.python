@@ -1,0 +1,21 @@
+
+export VIRTUALENV_PYTHON=/usr/bin/python3
+
+for p in /usr/share/virtualenvwrapper /usr/bin
+do
+	if [[ -e $p/virtualenvwrapper.sh ]]
+	then
+		. $p/virtualenvwrapper.sh
+	fi
+done
+
+unset p
+
+if [[ -e ~/.local/lib/pyenv ]]
+then
+	export PYENV_ROOT="$HOME/.local/lib/pyenv"
+	path+="$PYENV_ROOT/bin"
+	eval "$(pyenv init -)"
+fi
+
+# vim: set ts=4 sw=4 ft=zsh:

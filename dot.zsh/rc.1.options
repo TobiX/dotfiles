@@ -1,0 +1,22 @@
+# Set some nice shell options
+
+setopt    auto_cd			# Do cd without cd
+setopt    extended_glob		# Globbing specials
+setopt NO_nomatch			# Leave not-expanded wildcards as they are and don't error
+setopt NO_bad_pattern		# dito
+setopt    printeightbit		# YEAH!
+
+# Completion and Lists
+setopt    list_packed		# More space
+setopt NO_list_beep			# Kill the beeping!
+setopt    complete_in_word
+setopt    correct			# Spelling!
+setopt    extended_glob
+
+# History
+setopt    extended_history
+setopt    share_history		# Some shared history!
+setopt    hist_ignore_dups	# No duplicates in the history
+setopt    hist_ignore_space	# Remove commands beginning with space from the history
+
+# vim: set ts=4 sw=4 ft=zsh:

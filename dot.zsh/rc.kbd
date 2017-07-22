@@ -1,0 +1,25 @@
+# keyboard magic
+bindkey -e
+
+[[ ! -d ${ZDOTDIR:-$HOME}/.zkbd ]] && ln -s ${ZDOTDIR:-$HOME}/.zsh/zkbd ${ZDOTDIR:-$HOME}/.zkbd
+
+#zkbdfile=${ZDOTDIR:-$HOME}/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE}
+zkbdfile=${ZDOTDIR:-$HOME}/.zkbd/$TERM-$VENDOR-$OSTYPE
+
+autoload -Uz zkbd
+if [[ ! -e $zkbdfile ]]
+then
+	echo "\n-------------"
+	DISPLAY= zkbd
+	echo "\n-------------"
+fi
+
+source $zkbdfile
+unset zkbdfile
+
+#[[ -n ${key[Left]} ]] && bindkey "${key[Left]}" backward-char
+#[[ -n ${key[Right]} ]] && bindkey "${key[Right]}" forward-char
+[[ -n ${key[Delete]} ]] && bindkey "${key[Delete]}" delete-char
+[[ -n ${key[Home]} ]] && bindkey "${key[Home]}" beginning-of-line
+[[ -n ${key[End]} ]] && bindkey "${key[End]}" end-of-line
+

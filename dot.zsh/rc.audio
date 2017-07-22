@@ -1,0 +1,43 @@
+# Audio convinience
+
+# Call a program without music ;)
+if [[ -e =mpc ]]
+then
+	nomp() {
+		setopt localoptions
+		local mpdplaying
+		if [[ `mpc` == *\[playing\]* ]]; then
+			mpdplaying=1
+			mpc pause >/dev/null
+		fi
+		$@
+		if [[ -n $mpdplaying ]]; then
+			mpc play >/dev/null
+		fi
+	}
+
+	[[ -e =mplayer ]] && alias mplayer="nomp command mplayer"
+	[[ -e =ut ]] && alias ut="nomp command ut"
+	[[ -e =mpv ]] && alias mpv="nomp command mpv"
+
+	if grep -q "^ *bind_to_address.*socket" ~/.config/mpd/mpd.conf 2>/dev/null
+	then
+		export MPD_HOST=$XDG_RUNTIME_DIR/mpd.socket
+	else
+		unset MPD_HOST
+	fi
+fi
+
+export ALSA_OUTPUT_PORTS="65:0"
+
+# some magic for mms streams hosted on tiscali's loadbalancers
+#get_stream_url () {
+#	echo ${${"$(curl "$1")"#*HREF=\"}%\"*}
+#}
+
+#alias swr3='mpv -cache 32 -playlist "http://lsd.newmedia.tiscali-business.com/bb/redirect.lsc?stream=swr3\$livestream.wma&content=live&media=ms"'
+alias swr3='mpv -cache 32 http://swr.ic.llnwd.net/stream/swr_mp3_m_swr3a'
+#alias swr3='mpv -nocache $(get_stream_url "http://lsd.newmedia.tiscali-business.com/bb/redirect.lsc?stream=swr3\$livestream.wma&content=live&media=ms")'
+#alias swr3='mpv -nocache $(curl "http://lsd.newmedia.tiscali-business.com/bb/redirect.lsc?stream=swr3/livestream.rm&content=live&media=rm" | head -1)'
+
+# vi: set ts=4 sw=4 ft=zsh:

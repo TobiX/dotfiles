@@ -1,0 +1,14 @@
+function shuffle {
+	emulate -L zsh
+	zmodload zsh/mathfunc
+	integer i
+	reply=()
+	# We want to get a new random stream, but using SECONDS alone is bad in
+	# shell scripts (they have deterministic timing most of the time, so
+	# the value might be predicatable) -- tobias
+	local +h -Z 5 RANDOM=$((RANDOM + SECONDS + $))
+	# set -- $~*   # uncomment to use with noglob alias
+	for ((i=1; i <= $#; ++i)) { reply[i*RANDOM/32768+1]+=($argv[i]) }
+	shift reply
+	print -l $reply
+}

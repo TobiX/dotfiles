@@ -1,0 +1,129 @@
+# tobias1 prompt theme
+# by Tobias Gruetzmacher <tobias-zsh@23.gs>
+# do whatever you like with this script
+
+prompt_tobias1_help () {
+  cat <<'EOF'
+This prompt is color-scheme-able.  You can invoke it thus:
+
+  prompt tobias1 [colors]
+
+Since there are many colors in this promt, you can change them individually to
+your taste. Just call the prompt with "<name> <color>" pairs, like:
+
+  prompt tobias1 user blue rootchar cyan
+
+You can use the following names:
+
+  user     - user@host part of the prompt
+  time     - clock in the prompt
+  rootchar - prompt character when root
+  userchar - prompt character when normal user
+  apm      - APM info
+  path     - directory in right prompt
+  cont     - secondary prompt
+  contchar - secondary promt character
+  error    - spelling correction prompt
+EOF
+}
+
+prompt_tobias1_setup () {
+	local -A pc
+	#local titlebar='%(!.[ROOT] | .)%n@%m:%~ | %1v | %y'
+	local titlebar='%(!.[ROOT] | .)%n@%m:%~'
+	local elm
+
+	pc=(
+		user green
+		time blue
+		rootchar red
+		userchar cyan
+		apm yellow
+		path red
+		cont green
+		contchar cyan
+		error red
+		vcs white
+		"$@")
+
+	PS1=''
+	case "$TERM" in
+		xterm*|rxvt*)
+			PS1+=$'%{\e]0;'$titlebar$'\a%}'
+		;;
+		screen*)
+			PS1+=$'%{\e_'$titlebar$'\e\\\ekzsh\e\\%}'
+		;;
+	esac
+
+	if [[ -n $SCHROOT_CHROOT_NAME ]]
+	then
+		PS1+="($SCHROOT_CHROOT_NAME) "
+	fi
+
+	# Finally, the prompt.
+	PS1+="%B%F{$pc[user]}%n@%m "
+	PS1+="%F{$pc[time]}%T "
+	PS1+="%F{$pc[apm]}%3v"
+	PS1+="%(!.%F{$pc[rootchar]}.%F{$pc[userchar]})$ %f%b"
+
+	RPS1=" %B%F{$pc[path]}%~"
+	[[ -o prompt_subst ]] && RPS1+='${vcs_info_msg_0_}'
+	RPS1+="%f%(?.. [%?])%b"
+
+	PS2="%F{$pc[cont]}%_%F{$pc[contchar]}>%f "
+
+	SPROMPT="zsh:%B%F{$pc[error]} "%R" -> "%r" [ynae]?%f%b "
+
+	functions[precmd]="${functions[precmd]//prompt_*_precmd}
+		prompt_tobias1_precmd"
+	[[ -f /proc/apm ]] && functions[precmd]+="
+		prompt_tobias1_precmd_apm"
+
+	# fixup older zsh versions
+	autoload -Uz is-at-least
+	if ! is-at-least 4.3.9
+	then
+		autoload -Uz colors zsh/terminfo
+		if [[ "$terminfo[colors]" -ge 8 ]]
+		then
+			colors
+		fi
+
+		for elm in PS1 RPS1 PS2 SPROMPT
+		do
+			# I would like to replace %F{somecolor} with %{$fg[somecolor]%},
+			# but that is to complicated, so make a very simple, color-less
+			# prompt...
+			eval "$elm=\${(S)$elm//\\%F{*}/}"
+			eval "$elm=\${$elm//\\%B/}"
+		done
+	fi
+}
+
+prompt_tobias1_precmd () {
+	setopt noxtrace localoptions
+	psvar=()
+	psvar[1]="${COLUMNS}x${LINES}"
+}
+
+prompt_tobias1_precmd_apm () {
+	setopt noxtrace localoptions
+	local bat ac
+
+	bat=${${="$(</proc/apm)"}[7]/%/%%}
+	[[ ${${="$(</proc/apm)"}[4]} == "0x01" ]] && ac="AC+"
+
+	[[ $bat == ("100%"|"-1%") ]] && psvar[3]=() || psvar[3]="$ac$bat "
+}
+
+# not integrated again...
+#prompt_tobias1_precmd_ibam () {
+#	setopt noxtrace localoptions
+#	local tmp="$(ibam --percentbattery 2>/dev/null)"
+#	PR_APM="${${tmp[(f)1]}[(w)-2]}%%(${${tmp[(f)3]}[(w)-1]}) "
+#}
+
+prompt_tobias1_setup "$@"
+
+# vim: set ts=4 sw=4 ft=zsh:

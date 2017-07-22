@@ -1,0 +1,1 @@
+text/html; pandoc --columns=120 -f html -t plain --wrap=none -i %s; nametemplate=%s.html; needsterminal; copiousoutput

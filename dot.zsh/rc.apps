@@ -1,0 +1,84 @@
+# Stuff for different applications
+
+# kde madness ;)
+if [[ -x =kioclient ]]
+then
+	alias k='kioclient exec .'
+	alias kcp='kioclient copy'
+	alias kmv='kioclient move'
+elif [[ -x =kfmclient ]]
+then
+	alias k='kfmclient openURL .'
+	alias kcp='kfmclient copy'
+	alias kmv='kfmclient move'
+fi
+
+# devtodo
+if [[ -x =devtodo ]]
+then
+	TODO_OPTIONS=(--timeout --summary)
+
+	alias td='todo'          # For devtodo, two chars shorter :)
+	alias tdl='todo --link'  # Debian...
+
+	# Called on every directory change!
+	chpwd ()
+	{
+		[[ -t 0 && -r .todo ]] && devtodo "$TODO_OPTIONS[@]"
+	}
+fi
+
+# cdrdao
+if [[ -x =cdrdao ]]
+then
+	cdrdao ()
+	{
+		local cmd=$1
+		shift
+		command cdrdao $cmd --device '/dev/cdrom' --driver generic-mmc:0x10 "$@"
+	}
+fi
+
+# local VNC stuff
+[[ -x =vncserver ]] && alias vnc-run='vncserver -geometry 1200x600 -depth 15 -localhost'
+[[ -x =xvncviewer ]] && alias vnc-view='xvncviewer -passwd ~/.vnc/passwd :1'
+
+# httrack
+if [[ -e /usr/lib/httrack/htsserver ]]
+then
+	alias hts='s /usr/lib/httrack/htsserver /usr/share/httrack/'
+	alias htsdiff='vimdiff <(sort -u old.lst) <(sort -u new.lst)'
+fi
+
+# distcc
+export DISTCC_HOSTS="localhost"
+case $HOST in
+	(may) DISTCC_HOSTS="kos-mos.local $DISTCC_HOSTS";;
+esac
+
+# one-shots
+[[ -d ~/doc/dev/dosage.private ]] && alias dosage='python3 ~/doc/dev/dosage.private/dosage -b ~/annex/webcomics -v --adult -o json'
+[[ -x =pstree ]] && alias pstree='pstree -u'  # show users in pstree
+alias mv='mv -i'  # mv should ask...
+alias leech='wget -r -np -l inf -N -kK -E'  # Download a full page...
+
+export MINICOM='-mc on'  # MiniCom with colors
+export EMAIL='tobias-debian@23.gs'  # mail address for Debian tools
+export RI='-f ansi'
+export EDITOR="vim"
+export DI_ARGS="-x tmpfs,devtmpfs,ntfs -h"  # statfs64 is slooooooow on ntfs...
+#export _JAVA_AWT_WM_NONREPARENTING=1  # Because Java is a piece of shit
+export WEBPROCESS_HOME=~/doc/dev/webprocess
+export LIBBLURAY_CP="/usr/share/java/libbluray.jar"
+export SDL_VIDEO_FULLSCREEN_HEAD=0
+export MOSH_ESCAPE_KEY="~"
+
+export RESTIC_REPOSITORY=/media/tobias/backup/restic
+restic_pass () {
+	if [ -e ~/doc/secret/restic-$HOST ]
+	then
+		. ~/doc/secret/restic-$HOST
+	fi
+}
+
+# vi: set ts=4 sw=4 ft=zsh:

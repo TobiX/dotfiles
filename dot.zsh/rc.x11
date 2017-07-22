@@ -1,0 +1,78 @@
+# X11 related functions
+
+# This checks if a specific display is availible, covered are VNC, every X11
+# that binds TCP sockets, XFree86, Xorg and maybe others... (modeled afer the
+# functions in VNC4)
+isdisplayfree () {
+	local d="$1"
+	zmodload -i zsh/net/tcp
+
+	for p in 6000 5900
+	do
+		ztcp -l $(($p + $d)) 2>/dev/null || return 1
+		ztcp -c
+	done
+
+	for f in /tmp/.X$d-lock /tmp/.X11-unix/X$d /usr/spool/sockets/X11/$d
+	do
+		[[ -e $f ]] && return 1
+	done
+
+	return 0
+}
+
+# Get the next free X Display
+getfreedisplay () {
+	for i in {0..99}
+	do
+		isdisplayfree $i && return $i
+	done
+	return 255
+}
+
+# only make wine stuff when the user has a wine directory
+if [[ -e ~/.wine ]]
+then
+	if [[ -d ~/.wine.games/drive_c ]]
+	then
+		alias gwine="WINEPREFIX=~/.wine.games wine"
+		alias gwinecfg="WINEPREFIX=~/.wine.games winecfg"
+	fi
+
+	[[ -d ~/.wine.games/drive_c/Programme/Diablo\ II ]] && diablo2 () {
+		local i lang="${1-nochange}"
+		setopt local_options null_glob
+		pushd ~/.wine.games/drive_c/Programme/Diablo\ II > /dev/null
+		for i in *.$lang; do ln -sf $i ${i:r}; done
+		WINEPREFIX=~/.wine.games wine Game.exe -skiptobnet -direct -d3d
+		popd > /dev/null
+	}
+
+	[[ -d ~/.wine.games/drive_c/Programme/Median\ 2008 ]] && median2008 () {
+		pushd ~/.wine.games/drive_c/Programme/Median\ 2008 > /dev/null
+		WINEPREFIX=~/.wine.games wine Game.exe -skiptobnet -direct -d3d
+		popd > /dev/null
+	}
+fi
+
+#obx () {
+#	getfreedisplay
+#	display=$?
+#	[[ $display != 255 ]] && STY= startx -- :$display -dpi 100 &
+#}
+
+xinabox () {
+	getfreedisplay
+	local display=$?
+	if [[ $display != 255 ]]
+	then
+		Xephyr :$display -screen 1024x768 &
+		sleep 1
+		DISPLAY=:$display openbox &
+#		xkbcomp $DISPLAY :$display
+	fi
+}
+
+true
+
+# vi: set ft=zsh ts=4 sw=4:

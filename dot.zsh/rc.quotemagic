@@ -1,0 +1,12 @@
+# Magic URL quoting
+
+autoload -Uz is-at-least
+# if you now paste a url it will be magically quoted!
+# but it only works on 4.2.0 and later.
+if is-at-least 4.2; then
+	autoload -Uz url-quote-magic
+	zle -N self-insert url-quote-magic
+	zstyle -e :urlglobber url-other-schema '[[ $words[1] == scp ]] && reply=("*") || reply=(http https ftp)' 
+fi
+
+# vim: set ts=4 sw=4:

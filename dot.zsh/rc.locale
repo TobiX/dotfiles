@@ -1,0 +1,47 @@
+# Try to find a suitable locale...
+
+# I replaced my own hack with something from
+# http://vincent.bernat.im/en/blog/2011-ssh-and-locales.html
+
+export LANG=C
+export LC_MESSAGES=C
+(( $+commands[locale] )) && function {
+local locales
+locales=( "LANG de_DE.utf8 en_GB.utf8 en_US.utf8 C.UTF-8 C" \
+	"LC_MESSAGES en_GB.utf8 en_US.utf8 de_DE.utf8 C.UTF-8 C" )
+for locale in $locales; do
+		for l in $=locale[(w)2,-1]; do
+				if locale -a | grep -qx $l; then
+						export $locale[(w)1]=$l
+						break
+				fi
+		done
+done
+} 2> /dev/null
+
+#setlocale () {
+#	local loc
+#	local var="$1"
+#	shift
+#	# scan through all preferred locales
+#	for loc in "$@"
+#	do
+#		error=$(eval $var=\$loc locale 2>&1 > /dev/null)
+#		if [[ $error == "" ]]
+#		then
+#			eval export $var=\$loc
+#			return 0
+#		fi
+#	done
+#	return 1
+#}
+#
+#if [[ -e =locale ]]
+#then
+#		setlocale LANG de_DE.UTF-8 en_GB.UTF-8 en_US.UTF-8 C.UTF-8 # &&
+##		setlocale LC_MESSAGES en_GB.UTF-8 en_US.UTF-8 # Hmm... GTK...
+#fi
+#
+#unfunction setlocale
+
+# vim:set ts=4 ft=zsh:

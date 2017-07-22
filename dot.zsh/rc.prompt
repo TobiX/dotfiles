@@ -1,0 +1,40 @@
+# fancy prompt
+
+# vcs_info
+setopt prompt_subst
+autoload -Uz vcs_info
+
+zstyle ':vcs_info:*' actionformats ' %F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f'
+zstyle ':vcs_info:*' formats ' %F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f'
+zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
+zstyle ':vcs_info:*' enable git cvs svn darcs mtn hg bzr
+if vcs_info 2> /dev/null
+then
+	functions[precmd]="${functions[precmd]//vcs_info}
+	vcs_info"
+fi
+
+# screen info
+case "$TERM" in
+	screen*)
+		preexec ()
+		{
+			local CMD=${1[(wr)^(*=*|sudo|-*)]}
+			CMD=${CMD##*/}
+			echo -n "\ek$CMD\e\\"
+		}
+	;;
+esac
+
+# I use prompt themes here, my own prompt is one :)
+autoload -Uz promptinit && promptinit
+
+# Set the promt to something sane when inside of MC
+if [ "$MC_SID" ]
+then
+	prompt redhat
+else
+	prompt tobias1
+fi
+
+# vim: set ts=4 sw=4 ft=zsh:

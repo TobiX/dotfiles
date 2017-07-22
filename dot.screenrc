@@ -1,0 +1,259 @@
+# File:                 $HOME/.screenrc
+# Purpose:              Setup file for program "(GNU) screen"
+# written by:           Sven Guckes  setup-screenrc(at)guckes.net
+# modified version of Tobias Gruetzmacher
+#
+# ===============================================================
+# ESCAPE - the COMMAND CHARACTER
+# ===============================================================
+# escape ^aa  # default
+# escape ^pp  # suggested binding for emacs users
+#
+# ===============================================================
+# VARIABLES - Boolean values (on/off)
+# ===============================================================
+  autodetach            on              # default: on
+  crlf                  off             # default: off
+  deflogin              on              # default: on
+  defnonblock           on              # default: off
+# defsilence            off             # default: off
+  hardcopy_append       on              # default: off
+# nethack               on              # default: off
+  startup_message       off             # default: on
+  vbell                 off             # default: ???
+#
+# ===============================================================
+# TERMCAP and TERMINFO
+# ===============================================================
+#
+#
+  termcapinfo xterm     ti@:te@
+#
+# termcap  xterm        'AF=\E[3%dm:AB=\E[4%dm'
+# terminfo xterm        'AF=\E[3%p1%dm:AB=\E[4%p1%dm'
+#
+# Matthias Kopfermann <matthias_kopfermann@gmx.de> [020222]:
+# make the cursor show up in red:
+# termcapinfo linux "ve=\E[?25h\E[?17;0;64c"
+#
+# ===============================================================
+# VARIABLES - Number values
+# ===============================================================
+  defscrollback         10000           # default: 100
+# msgminwait            3               # default: 1
+  silencewait           15              # default: 30
+#
+# ===============================================================
+# VARIABLES - Paths and Files (esp. programs)
+# ===============================================================
+# bufferfile:   The file to use for commands
+#               "readbuf" ('<') and  "writebuf" ('>'):
+bufferfile            $HOME/.cache/screen_exchange
+#
+# hardcopydir:  The directory which contains all hardcopies.
+hardcopydir           $HOME/.cache
+#
+# ===========================================
+# CAPTION - shows a "caption" for the window.
+# ===========================================
+# a "caption" is another line which can show information -
+# in addition to the hardstatus line.
+#
+# use caption to show window list:
+# caption always "%{= kc}%?%-Lw%?%{= kY}%n*%f %t%?(%u)%?%{= kc}%?%+Lw%?"
+#
+# caption always '%{= wb}%50=%n%f %t%{= wb}'
+# this basically just shows the current window number and title
+# on its own; the "%50=" displays it in the middle of the line.
+#
+# caption always "%>%{wk}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{wk}%?%+Lw%?%<"
+# caption always "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+# caption always "%?%F%{.RW}%?%3n %t%? [%h]%?"
+# caption always "%{rk}%H %{gk}%c %{yk}%M%d %{wk}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{wk}%?%+Lw%?"
+#
+  caption always "%{kG}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{kG}%?%+Lw%?"
+#
+# "push right border: current time with seconds and current date"
+# caption always "%=%c:%s %Y-%m-%d"
+# ===============================================================
+#
+# ===============================
+# Hardstatus Line and sorendition
+# ===============================
+# hardstatus: Always show the window list in the last line:
+# hardstatus alwayslastline "%w"
+# hardstatus alwayslastline "%H %w"
+#
+# use 'L' between '%' and 'w' to show the flags, too1
+# hardstatus alwayslastline "%H %Lw"
+#
+# example by Adam Spiers <gnu-screen@adamspiers.org> :
+# *without* colors:
+# hardstatus alwayslastline "%?%-Lw%?%n*%f %t%?(%u)%?%?%+Lw%?"
+# *with* colors:
+# hardstatus alwayslastline "%?%{yk}%-Lw%?%{wb}%n*%f %t%?(%u)%?%?%{yk}%+Lw%?"
+#
+# This will show the current time and today's date in YYmmdd, too:
+# hardstatus alwayslastline " %c | %Y%m%d |  %w"
+#
+# This will show today's date in mmdd and the current time, too:
+# hardstatus alwayslastline " %m%d %c |  %w"
+#
+# combining all of these gives:
+# hardstatus alwayslastline "%{rw}%H%{wk}|%c|%M%d|%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{wk}%?%+Lw%?"
+#
+# this uses a black background foreverything execpt for
+# the current window which is show on a white background.
+# hostname in red, clock in green, date in yellow:
+# hardstatus alwayslastline "%{rk}%H %{gk}%c %{yk}%M%d %{wk}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{wk}%?%+Lw%?"
+#
+#
+# hardstatus alwayslastline "%{rk}host: %H %33=%{yk}date: %M%d %66=%{gk}time: %c:%s%="
+#
+# hardstatus alwayslastline "%{rk}host: %H %33=%{yk}date: %M%d %66=%{gk}time: %c%="
+#
+# no "host:", "date:", or "time:" here.
+# instead, the info gets placed at 16%, 50%, and 80% so that it is
+# placed soemwhat in the middle of each of the three panels.
+# hardstatus alwayslastline "%{RY}%16=%H %33=%{YR}%50=%M%d %66=%{Gb}%80=%c%="
+#
+  hardstatus alwayslastline "%{BW}%h%-33=%{RY} host: %H %-14=%{Gb} %M%d %c%="
+#
+# note: the use of ANSI color sequences is deprecated.
+#       please upgrade to (at least) screen 3.9.13
+#       so you can make use of the color letters/names!
+#
+# "sorendition": set the colors for
+# the "messages" and "text marking"
+# (ie text you mark in copy mode):
+#
+# sorendition 10 99 # default!
+# sorendition 02 40 # green  on black
+# sorendition 02 34 # yellow on blue
+# sorendition    rw # red    on white
+  sorendition    kG # black  on bold green
+#
+# ===============================================================
+# Messages
+# ===============================================================
+# "~" stands for the "bell" character
+#
+# activity              'Activity in window %n' # default
+#
+# use %n to display the window number and %t for its title:
+# activity              "activity in window #%n title: %t~"
+#
+# activity              "activity in window #%n title: %t~"
+#
+  activity              "%C -> %n%f %t activity!"
+#
+# pass on the "beep" (CTRL-G) by adding a '~':
+  bell                  "%C -> %n%f %t bell!~"
+#
+# pow_detach_msg:       Message shown when session
+#                       gets power detached.
+  pow_detach_msg        "BYE"
+#
+# vbell_msg:            Message shown when the
+#                       "virtual bell" rings.
+  vbell_msg             " *beep* "
+#
+# ==============================================================
+#  BIND bind - defaults
+# ==============================================================
+# The "bind" command assign keys to (internal) commands
+# SCREEN checks all the keys you type; you type the key
+# which is known as the "command character" then SCREEN
+# eats this key, too, and checks whether this key is
+# "bound" to a command.  If so then SCREEN will execute it.
+#
+# The command "bind" allows you to chose which keys
+# will be assigned to the commands.
+#
+# ===============================================================
+# Key bindings
+# ===============================================================
+# Remove some default key bindings by binding
+# them to "nothing" (empty right-hand-side):
+#
+# bind .  dumptermcap # default
+  bind .
+# bind ^\ quit        # default
+  bind ^\
+# bind \\ quit        # default
+  bind \\
+# bind h  hardcopy    # default
+# bind h
+# bind ^h ???         # default
+# bind ^h
+# bind }  history     # default
+# bind }
+#
+# enable "zombie mode":
+zombie d
+# here the parameter 'd' defines the key
+# which makes a zombie window go away.
+#
+## bind K  kill # default!
+   bind K
+# This *removes* the binding for 'K'
+# thus requireing you to enter the
+# command via the command line, ie ":kill".
+# This prevent accidental killing of your windows.
+# Old versions of SCREEN do not prompt for
+# confirmation on "killing a window", you see..
+#
+# bind L # unbound by default
+bind L screen 9 ncmpc
+
+bind M monitor # default!
+
+# bind N nuber # "This is window 0 (vim)." Yes - very useful with hardstatus...
+
+#
+# Paste - use 'P' instead of ']':
+# bind P # unbound by default
+  bind P paste .
+# The character ']' is hard to type on german keyboards,
+# as it requires the use of a yet another meta character "AltGR".
+# bind ] paste . # default!
+#
+# ===============================================================
+# BINDKEY:
+# ===============================================================
+#
+# use the PgUp and PgDn keys to enter copy mode
+# and page through the window backlog:
+#  bindkey -k kP copy
+#
+# Use the function keys F11 and F12 (!!!)
+# to cycle backwards/forwards in
+# the list of existing windows:
+# TG: was F7 & F8, not so funny
+  bindkey -k F1 prev
+  bindkey -k F2 next
+#
+# make the "kb" send a backspace (CTRL-H:)
+# bindkey -d kb stuff ^H
+# WARNING:  this does not work as advertised.
+# it eats the "kb" when typing "dankbar" for example. :-(
+#
+# NumPad keybindings:
+# ^[Oo /      resize =
+# ^[Oj *      resize max
+# ^[Om -      resize -2
+# ^[Ok +      resize +2
+# ^[OM Enter
+#
+# ===============================================================
+# At the very end... show the current version and say hello :-)
+# ===============================================================
+# Briefly show the version number of this starting
+# screen session - but only for *one* second:
+  msgwait 1
+  version
+# change back to showing messages
+# for duration of two seconds:
+  msgwait 2
+
+# vim: ts=8 et nowrap

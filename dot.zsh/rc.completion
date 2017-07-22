@@ -1,0 +1,51 @@
+# Settings for completion
+
+# Host completion from SSH known_hosts
+#_ssh_hosts=(${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[0-9]*}%%\ *}%%,*})
+#zstyle ':completion:*:hosts' hosts $_ssh_hosts
+
+# Cache for long completion list (e.G. Debian packages)
+mkdir -p ~/.cache/zsh
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.cache/zsh
+
+# Exclude CVS directories
+zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)CVS' 
+zstyle ':completion:*:cd:*' ignored-patterns '(*/)#CVS'
+
+# Ignore completion function when completing commands
+zstyle ':completion:*:functions' ignored-patterns '_*'
+
+# Processes with listing (e.g. for kill)
+zstyle ':completion:*:*:*:*:processes' menu yes select
+zstyle ':completion:*:*:*:*:processes' force-list always
+#zstyle ':completion:*:*:*:*:processes' list-colors "=(#b) #([0-9]#)*=$color[cyan]=$color[red]"
+
+# Show all my processes
+zstyle ':completion:*:processes' command 'ps -u $EUID'
+
+# Nice colors
+highlights='${PREFIX:+=(#bi)($PREFIX:t)(?)*=00=$color[red]=$color[green];$color[bold]}'
+zstyle -e ':completion:*' list-colors 'reply=( "'"$highlights"'" ${(s.:.)LS_COLORS} )'
+
+# The following lines were added by compinstall
+
+zstyle ':completion:*' completer _expand _complete
+zstyle ':completion:*' expand prefix suffix
+zstyle ':completion:*' format '---- %d ----'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' ignore-parents parent pwd
+zstyle ':completion:*' insert-unambiguous false
+zstyle ':completion:*' list-prompt '%SAt %p: Hit TAB for more, or the character to insert%s'
+zstyle ':completion:*' menu select=1
+zstyle ':completion:*' original true
+zstyle ':completion:*' preserve-prefix '//[^/]##/'
+zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
+zstyle ':completion:*' verbose true
+zstyle :compinstall filename '/home/tobias/.zsh/rc.completion'
+
+autoload -Uz compinit
+compinit -u
+# End of lines added by compinstall
+
+# vim: set ts=4 sw=4:

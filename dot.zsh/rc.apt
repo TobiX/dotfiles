@@ -1,0 +1,43 @@
+
+# Debian Admin stuff
+if [[ -x =apt-get ]]
+then
+	if [[ -x =apt ]]
+	then
+		alias agu='sudo apt update'
+		alias agU='sudo apt upgrade'
+		alias agd='sudo apt dist-upgrade'
+		alias agi='sudo apt install'
+		alias agr='sudo apt remove'
+		alias agp='sudo apt-get purge'
+		alias acs='apt show'
+		alias acf='apt search'
+	else
+		alias agu='sudo apt-get update'
+		alias agU='sudo apt-get upgrade'
+		alias agd='sudo apt-get dist-upgrade'
+		alias agi='sudo apt-get install'
+		alias agr='sudo apt-get remove'
+		alias agp='sudo apt-get purge'
+		alias acs='apt-cache show'
+		alias acf='apt-cache search'
+	fi
+	
+	if [[ -x =aptitude ]]
+	then
+		alias aiu='sudo aptitude upgrade'
+		alias aid='sudo aptitude dist-upgrade'
+		alias aii='sudo aptitude install'
+		alias aip='sudo aptitude purge'
+		alias aim='sudo aptitude markauto'
+		alias ais='aptitude search'
+	fi
+
+	alias agc='sudo apt-get clean'
+	alias acp='apt-cache showpkg'
+	[[ -x =debfoster ]] && alias debf='sudo debfoster'
+	[[ -x =m-a ]] && alias m-a='m-a -u ~/src/m-a'
+fi
+
+true
+# vi: set ts=4 sw=4 ft=zsh:

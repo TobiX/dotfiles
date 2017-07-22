@@ -1,0 +1,14 @@
+# useful functions
+
+# filename editor
+fnedit () {
+	local name=$1
+	oldname=$name
+	vared name
+	if [[ $oldname != $name ]]
+	then
+		mv -vi $oldname $name
+	fi
+}
+
+# vi: set ft=zsh ts=4 sw=4:

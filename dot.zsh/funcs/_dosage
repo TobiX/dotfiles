@@ -1,0 +1,31 @@
+#compdef dosage
+#
+# zsh completion for the dosage webcomic downloader
+
+_dosage () {
+  _arguments -C -s \
+    '(-h --help)'{-h,--help}'[show help message and exit]' \
+    '*'{-v,--verbose}'[verbose output, use multiple times for more verbosity]' \
+    '(-n --numstrips)'{-n+,--numstrips=}'[traverse and retrieve the given number of comic strips]:count' \
+    '(-a --all)'{-a,--all}'[traverse and retrieve all comic strips]' \
+    '(-c --continue)'{-c,--continue}'[traverse and retrieve comic strips until an existing one is found]' \
+    '(-b --basepath)'{-b+,--basepath=}'[path for saved comics (default: Comics)]:path:_files -/' \
+    '--baseurl=[the base URL of your comics directory]:URL:_urls' \
+    '(-l --list)'{-l,--list}'[list available comic modules]' \
+    '--singlelist[list available comic modules in a single list]' \
+    '(-V --version)'{-V,--version}'[display the version number]' \
+    '(-m --modulehelp)'{-m,--module-help}'[display help for comic modules]' \
+    '(-t --timestamps)'{-t,--timestamps}'[print timestamps for all output]' \
+    '(-o --output)'{-o+,--output=}'[output formatting for downloaded comics]:format:((text html rss))' \
+    '--adult[confirms that you are old enough to view adult content]' \
+    "*:comics:_dosage_comics"
+}
+
+_dosage_comics () {
+  if [[ ${+_dosage_comic_list} -eq 0 ]]; then
+    _dosage_comic_list=(${${(f)"$(_call_program dosage-list $words[1] --singlelist @)"}[3,-2]})
+  fi
+  _wanted values expl "comics" _multi_parts -i "/" _dosage_comic_list
+}
+
+_dosage "$@"

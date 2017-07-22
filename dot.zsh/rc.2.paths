@@ -1,0 +1,42 @@
+# Some handy settings for different *PATH arrays
+
+# make INFOPATH and CLASSPATH special like the other PATHs
+typeset -gxT INFOPATH infopath
+typeset -gxT CLASSPATH classpath
+# automatically remove duplicates from these arrays
+typeset -U path cdpath fpath manpath infopath
+
+# add some handy path constructs
+for d in ~/.local/bin ~/doc/dev/scripts /usr/games /var/lib/gems/*/bin
+do
+	[[ -d $d ]] && path=($d $path)
+done
+
+for d in ~/.zsh/funcs
+do
+	[[ -d $d ]] && fpath=($d $fpath)
+done
+
+# cdpath is strange...
+#for d in ~ ~/src ~/doc /work/tobias
+#do
+#	[[ -d $d ]] && cdpath=($d $cdpath)
+#done
+
+for d in ~/info
+do
+	[[ -d $d ]] && infopath=($d $infopath)
+done
+
+classpath=(.)
+for d in /usr/share/java/antlr3.jar /usr/share/java/stringtemplate.jar
+do
+	[[ -f $d ]] && classpath=($d $classpath)
+done
+export CLASSPATH
+
+# we don't want anything there, really
+unset MANPATH
+unset d
+
+# vim: set ts=4 sw=4 ft=zsh:

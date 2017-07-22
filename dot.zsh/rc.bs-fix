@@ -1,0 +1,19 @@
+# Detect and fix terminals that send ^? or ^h as Backspace
+# Thanks to Peter Stephenson
+
+backward-delete-char-detect() {
+	if (( #KEYS == ##\C-? )); then
+		zmodload -i zsh/sched
+		sched +00:00 "stty erase '^?'"
+	elif (( #KEYS == ##\C-h )); then
+		zmodload -i zsh/sched
+		sched +00:00 "stty erase '^h'"
+	fi
+
+	zle -A .$WIDGET $WIDGET
+	zle .$WIDGET
+}
+#zle -N backward-delete-char backward-delete-char-detect
+#zle -N vi-backward-delete-char backward-delete-char-detect
+
+# vim: set ts=4 sw=4 ft=zsh:

@@ -1,0 +1,40 @@
+# set some zsh internals
+
+# Watch logins and logouts
+LOGCHECK=10
+WATCH=notme
+WATCHFMT="%D %T: User %B%n%b %a at %l%(M: from %M:)"
+
+# history control
+HISTFILE=~/.cache/zsh_history.$UID
+SAVEHIST=200000
+HISTSIZE=200000
+
+# never correct to rm or _*
+CORRECT_IGNORE="_*|rm"
+
+# secure tmp files
+if [[ -d $TMP ]]
+then
+	TMPPREFIX=$TMP/zsh
+fi
+
+# Nice extensions
+autoload -Uz zmv zcalc zargs shuffle
+autoload -Uz keeper && keeper
+
+# hide values in set
+typeset -H key _comps _postpatcomps _patcomps _services _comp_setup \
+	_comp_options color colour FPATH zsh_mime_handlers zsh_mime_flags
+
+# Make run-help work right (it's aliased onto man on some systems?)
+if [[ -d /usr/share/zsh/help ]]
+then
+	alias run-help > /dev/null && unalias run-help
+	autoload run-help
+	HELPDIR=/usr/share/zsh/help
+fi
+
+alias mmv='noglob zmv -W'
+
+# vi: set ts=4 sw=4 ft=zsh:

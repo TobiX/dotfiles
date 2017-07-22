@@ -1,0 +1,17 @@
+# SSH magic
+sshlink="$HOME/.cache/newest-ssh-agent"
+
+if [[ -o login && $SSH_AUTH_SOCK != "" ]]
+then
+	ln -sf "$SSH_AUTH_SOCK" "$sshlink"
+fi
+
+[[ -e $sshlink ]] && export SSH_AUTH_SOCK="$sshlink"
+
+unset sshlink
+
+# CygWin & KeeAgent
+[[ -e /home/keeagent.sock ]] && export SSH_AUTH_SOCK="/home/keeagent.sock"
+
+true
+# vi: set ft=zsh ts=4 sw=4:
