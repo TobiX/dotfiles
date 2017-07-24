@@ -22,8 +22,9 @@ for f in glob('dot.*'):
     try:
         os.symlink(src_rel, dst)
     except FileExistsError:
-        if not os.path.samefile(src, dst):
-            print(src + " exists and does not link do " + dst)
+        # Broken symbolic links do not "exist"
+        if not os.path.exists(dst) or not os.path.samefile(src, dst):
+            print(dst + " exists and does not link do " + src)
             exit = 1
 
 sys.exit(exit)
