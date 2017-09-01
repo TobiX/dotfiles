@@ -55,12 +55,6 @@ then
 	}
 fi
 
-#obx () {
-#	getfreedisplay
-#	display=$?
-#	[[ $display != 255 ]] && STY= startx -- :$display -dpi 100 &
-#}
-
 xinabox () {
 	getfreedisplay
 	local display=$?

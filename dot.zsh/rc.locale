@@ -19,29 +19,4 @@ for locale in $locales; do
 done
 } 2> /dev/null
 
-#setlocale () {
-#	local loc
-#	local var="$1"
-#	shift
-#	# scan through all preferred locales
-#	for loc in "$@"
-#	do
-#		error=$(eval $var=\$loc locale 2>&1 > /dev/null)
-#		if [[ $error == "" ]]
-#		then
-#			eval export $var=\$loc
-#			return 0
-#		fi
-#	done
-#	return 1
-#}
-#
-#if [[ -e =locale ]]
-#then
-#		setlocale LANG de_DE.UTF-8 en_GB.UTF-8 en_US.UTF-8 C.UTF-8 # &&
-##		setlocale LC_MESSAGES en_GB.UTF-8 en_US.UTF-8 # Hmm... GTK...
-#fi
-#
-#unfunction setlocale
-
 # vim:set ts=4 ft=zsh:
