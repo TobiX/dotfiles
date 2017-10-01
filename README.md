@@ -23,7 +23,7 @@ The zsh init scripts should be compatible with a wide range of zsh versions.
 ## How to install
 
 ```
-git clone --recursive https://github.com/TobiX/dotfiles.git
+git clone --recurse-submodules https://github.com/TobiX/dotfiles.git
 cd dotfiles
 ./setup.py  # or python setup.py
 ```
