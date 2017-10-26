@@ -72,8 +72,10 @@ hi User2 ctermfg=cyan   ctermbg=darkblue guifg=cyan   guibg=darkblue
 hi User3 ctermfg=yellow ctermbg=darkblue guifg=yellow guibg=darkblue
 hi SpecialKey   ctermfg=3 guifg=#444444
 
-" mouse stuff (I don't want any mouse in my vim)
-"set mouse=a
+" mouse stuff (I don't want mouse support in console vim)
+if !has("gui_running")
+  set mouse=
+endif
 set mousemodel=popup_setpos
 
 " linebreak and list don't work together... :(
@@ -139,5 +141,3 @@ let g:DirDiffDynamicDiffText = 0
 
 " Options for specific projects
 au BufNewFile,BufRead */dosage/*	set expandtab sw=4 sts=4
-
-let g:GetLatestVimScripts_allowautoinstall=1
