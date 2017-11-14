@@ -1,0 +1,17 @@
+# "Windows subsystem for Linux" workarounds
+
+if [[ -f /proc/version && $(</proc/version) == *Microsoft@Microsoft* ]]
+then
+	# Set correct umask
+	# Microsoft/BashOnWindows#352
+	if [[ "$(umask)" == '000' ]]
+	then
+		umask 022
+	fi
+
+	# Prevent ZSH from changing the priority of the background processes with nice.
+	# Microsoft/BashOnWindows#1887
+	unsetopt BG_NICE
+fi
+
+true
