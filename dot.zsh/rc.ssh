@@ -10,8 +10,24 @@ fi
 
 unset sshlink
 
-# CygWin & KeeAgent
-[[ -e /home/keeagent.sock ]] && export SSH_AUTH_SOCK="/home/keeagent.sock"
+# CygWin/WSL & KeeAgent
+if [[ $SSH_AUTH_SOCK == "" ]]
+then
+	if [[ -e /home/keeagent.sock ]]
+	then
+		export SSH_AUTH_SOCK="/home/keeagent.sock"
+	elif [[ -d /mnt/c/Users && -x =socat ]]
+	then
+		# From https://github.com/dlech/KeeAgent/issues/159
+		socks=(/mnt/c/Users/*/ssh_auth_sock_msysgit)
+		export SSH_AUTH_SOCK="$HOME/.cache/keeagent-socket.$$"
+		socat UNIX-LISTEN:${SSH_AUTH_SOCK},mode=0600,fork,shut-close \
+			"TCP:localhost:${${$(<$socks)#*>}% *},connect-timeout=2" 2>/dev/null &!
+		functions[zshexit]+="
+			kill $$"
+		unset socks
+	fi
+fi
 
 true
 # vi: set ft=zsh ts=4 sw=4:
