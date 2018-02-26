@@ -5,7 +5,6 @@ alias aoeu='setxkbmap de nodeadkeys || loadkeys de-latin1-nodeadkeys'
 alias asdf='setxkbmap dvorak || loadkeys dvorak'
 
 # Variables and aliases for user programs
-alias ss='echo ${COLUMNS}x${LINES}'
 # set DISPLAY to first screen on ssh connected host
 alias dispssh='export DISPLAY=${${=SSH_CLIENT}[1]}:0'
 
