@@ -73,12 +73,9 @@ export LIBBLURAY_CP="/usr/share/java/libbluray.jar"
 export SDL_VIDEO_FULLSCREEN_HEAD=0
 export MOSH_ESCAPE_KEY="~"
 
-export RESTIC_REPOSITORY=/media/tobias/backup/restic
-restic_pass () {
-	if [ -e ~/doc/secret/restic-$HOST ]
-	then
-		. ~/doc/secret/restic-$HOST
-	fi
-}
+if [ -e ~/doc/secret/envs ]
+then
+	. ~/doc/secret/envs
+fi
 
 # vi: set ts=4 sw=4 ft=zsh:
