@@ -15,6 +15,7 @@
 	default = simple
 [alias]
 	akey = annex examinekey --format='.git/annex/objects/${hashdirmixed}${key}/${key}\n'
+	serve = daemon --reuseaddr --verbose --base-path=. --export-all ./.git
 	timeline = log --oneline --graph --decorate
 [rerere]
 	enabled = true
