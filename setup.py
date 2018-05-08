@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# © 2017 qsuscs, TobiX
+# © 2017-2018 qsuscs, TobiX
+# Should still run with Python 2.7...
 
 from __future__ import print_function, unicode_literals
 
@@ -12,7 +13,8 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 exit = 0
 
 for f in glob('dot.*'):
-    dst = os.path.expanduser('~/' + f[3:].replace(u'\u2571', '/'))
+    dst = os.path.expanduser(
+        '~/' + f[3:].replace("--", "\ufffd").replace("-", "/").replace("\ufffd", "-"))
     src = os.path.join(os.getcwd(), f)
     src_rel = os.path.relpath(src, os.path.dirname(dst))
 

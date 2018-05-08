@@ -9,8 +9,10 @@ repositories for the correct licensing terms.
 
 ## Subdirectories
 
-To keep things simple, dotfiles in subdirectories are deployed by replacing
-the slash in the filename with U+2571 - a unicode box drawing symbol (╱)
+To keep things simple, dotfiles in subdirectories are deployed using a
+replacement scheme similar to systemd's unit files: A single minus (-)
+represents a slash in the target file name, while a minus can be escaped by
+repeating it (--).
 
 ## Compatiblity
 
