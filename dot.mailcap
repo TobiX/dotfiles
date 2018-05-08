@@ -1,1 +1,3 @@
-text/html; pandoc --columns=120 -f html -t plain --wrap=none -i %s; nametemplate=%s.html; needsterminal; copiousoutput
+text/html; pandoc --columns=120 -f html -t plain --wrap=none \
+	--filter $DOTFILES_BASE/tools/pandoc-table-strip.py -i %s; \
+	nametemplate=%s.html; needsterminal; copiousoutput
