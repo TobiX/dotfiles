@@ -19,6 +19,8 @@
 	timeline = log --oneline --graph --decorate
 [rerere]
 	enabled = true
+[http]
+	cookiefile = ~/.cache/gitcookies
 [diff]
 	tool = kdiff3
 [difftool "idiff"]
