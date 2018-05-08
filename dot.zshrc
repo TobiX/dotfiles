@@ -10,10 +10,14 @@ then
 	colors
 fi
 
+__thiszshrc="${ZDOTDIR:-$HOME}/.zshrc"
+export DOTFILES_BASE="$__thiszshrc:A:h"
+unset __thiszshrc
+
 setopt extended_glob
 echo "$fg[green]starting up shell$reset_color\c"
 [[ $V == 1 ]] && echo ":\c"
-for script in ~/.zsh/rc.*~*~
+for script in $DOTFILES_BASE/zsh/rc.*~*~
 do
 	[[ $V == 1 ]] && echo " $script:e\c" || echo ".\c"
 	. $script
@@ -22,4 +26,4 @@ done
 [[ $V == 1 ]] && echo "." || echo
 unset script
 
-# vi: set ts=4 sw=4:
+# vi: set ts=4 sw=4 ft=zsh:

@@ -7,12 +7,13 @@ typeset -gxT CLASSPATH classpath
 typeset -U path cdpath fpath manpath infopath
 
 # add some handy path constructs
-for d in ~/.local/bin ~/doc/dev/scripts /usr/games /var/lib/gems/*/bin
+for d in ~/.local/bin ~/doc/dev/scripts $DOTFILES_BASE/bin /usr/games \
+	/var/lib/gems/*/bin
 do
 	[[ -d $d ]] && path=($d $path)
 done
 
-for d in ~/.zsh/funcs
+for d in $DOTFILES_BASE/zsh/funcs
 do
 	[[ -d $d ]] && fpath=($d $fpath)
 done
