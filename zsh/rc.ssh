@@ -21,7 +21,7 @@ then
 		# From https://github.com/dlech/KeeAgent/issues/159
 		socks=(/mnt/c/Users/*/ssh_auth_sock_msysgit)
 		export SSH_AUTH_SOCK="$HOME/.cache/keeagent-socket.$$"
-		socat UNIX-LISTEN:${SSH_AUTH_SOCK},mode=0600,fork,shut-close \
+		socat UNIX-LISTEN:${SSH_AUTH_SOCK},mode=0600,fork,shut-close,unlink-early \
 			"TCP:localhost:${${$(<$socks)#*>}% *},connect-timeout=2" 2>/dev/null &!
 		functions[zshexit]+="
 			kill $$"
