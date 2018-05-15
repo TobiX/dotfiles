@@ -25,5 +25,12 @@
 	tool = kdiff3
 [difftool "idiff"]
 	cmd = diff -i $LOCAL $REMOTE
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
 [include]
 	file = ~/doc/secret/git.conf
+
