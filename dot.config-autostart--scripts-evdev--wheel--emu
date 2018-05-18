@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Scroll emulation on Thinkpad touch stick
+d="TPPS/2 IBM TrackPoint"
+xinput list --id-only "$d" || d="AlpsPS/2 ALPS DualPoint Stick"
+xinput set-prop "$d" "Evdev Wheel Emulation" 1
+xinput set-prop "$d" "Evdev Wheel Emulation Axes" 6 7 4 5
+xinput set-prop "$d" "Evdev Wheel Emulation Button" 2
