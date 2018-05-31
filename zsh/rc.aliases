@@ -11,6 +11,10 @@ alias dispssh='export DISPLAY=${${=SSH_CLIENT}[1]}:0'
 alias ffprobe='ffprobe -hide_banner'
 alias ffmpeg='ffmpeg -hide_banner'
 
+# fancy ip
+alias ip='ip --color'
+alias ipb='ip --brief'
+
 # replacement for GREP_OPTIONS (which is obsolete)
 alias grep='grep --color=auto --exclude-dir=.svn --exclude-dir=.tox'
 
