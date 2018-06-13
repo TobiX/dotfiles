@@ -30,6 +30,8 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[log]
+	follow = true
 
 [include]
 	file = ~/doc/secret/git.conf
