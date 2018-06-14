@@ -30,6 +30,6 @@ fi
 
 export ALSA_OUTPUT_PORTS="65:0"
 
-alias swr3='mpv -cache 32 http://swr.ic.llnwd.net/stream/swr_mp3_m_swr3a'
+alias swr3='mpv https://swr-swr3-live.sslcast.addradio.de/swr/swr3/live/mp3/128/stream.mp3'
 
 # vi: set ts=4 sw=4 ft=zsh:
