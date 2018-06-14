@@ -20,7 +20,11 @@ done
 
 for d in ~/src/go
 do
-	[[ -d $d ]] && export GOPATH=$d
+	if [[ -d $d ]]
+	then
+		export GOPATH=$d
+		path+=$d/bin
+	fi
 done
 
 # cdpath is strange...
