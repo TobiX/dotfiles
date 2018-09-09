@@ -12,11 +12,15 @@
 # For vimeo:
 #   h264-hd
 # For YouTube:
-#    37: 1080p
-#    22: 720p
+#  Video is H264 for hardware acceleration
+#   299: DASH 1080p 60fps (too much for old FireTV)
+#   137: DASH 1080p 30fps
 #   298: DASH 720p 60fps
 #   136: DASH 720p 30fps
+#   251: DASH Opus 160k
 #   140: DASH AAC 128k
+#    22: 720p
+#    18: 360p
 # For arte.tv:
 #   720-2200-VA-STA
 #   720-2200-VO
@@ -28,4 +32,5 @@
 #   h264_aac_mp4_http_na_na-veryhigh-0: mp4, 852x480, h264@1400k, aac@56k
 # For Heise:
 #   mp4_720p
---format "298+140/136+140/22/35/34/18/720-2200-VA-STA/720-2200-VO/HTTP_MP4_SQ_1/h264-hd/Blip HD 720/Source/live/h264_aac_mp4_http_na_na-veryhigh/h264_aac_mp4_http_na_na-veryhigh-0/mp4_720p"
+--format
+"298+251/137+251/136+251/22/18/720-2200-VA-STA/720-2200-VO/HTTP_MP4_SQ_1/h264-hd/Blip HD 720/Source/live/h264_aac_mp4_http_na_na-veryhigh/h264_aac_mp4_http_na_na-veryhigh-0/mp4_720p"
