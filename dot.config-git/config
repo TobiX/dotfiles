@@ -9,6 +9,8 @@
 [core]
 	pager = less
 	autocrlf = input
+[protocol]
+	version = 2
 [credential]
 	helper = store
 [push]
@@ -40,4 +42,3 @@
 
 [include]
 	file = ~/doc/secret/git.conf
-
