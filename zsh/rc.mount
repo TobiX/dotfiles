@@ -59,21 +59,14 @@ mount_or_umount_pmount () {
 [[ -d /media/nec ]] && alias nec="mount_or_umount_fstab /media/nec"
 [[ -d /media/tosh ]] && alias tosh="mount_or_umount_fstab /media/tosh"
 [[ -d /media/cdrom0 ]] && alias cdrom="mount_or_umount_fstab /media/cdrom0"
-if [[ -x =pmount ]]; then
-	alias ext="mount_or_umount_pmount disk/by-label/tobias-ext external"
-#	alias cryptostick="mount_or_umount_pmount disk/by-id/usb-TOSHIBA_TransMemory_0BF0665083401992-part2 crypto"
-#	alias scd="mount_or_umount_pmount scd0 scd0"
-	alias wd="mount_or_umount_pmount disk/by-uuid/0e65dafa-2e30-4f6f-af12-945ff9762228 WD"
-fi
 grep -q '^.\?nibbler' ~/.ssh/known_hosts && {
-	alias nib-home="mount_or_umount_sshfs nibbler:/home/tobias /home/tobias/mnt"
-	alias nib-media="mount_or_umount_sshfs nibbler:/srv/media /home/tobias/mnt"
+	alias nib-home="mount_or_umount_sshfs nibbler:$HOME $HOME/mnt"
+	alias nib-media="mount_or_umount_sshfs nibbler:/srv/media $HOME/mnt"
 }
 grep -q '^.\?kos-mos' ~/.ssh/known_hosts && {
-	alias kos-home="mount_or_umount_sshfs kos-mos:/home/tobias /home/tobias/mnt"
-	alias kos-media="mount_or_umount_sshfs kos-mos:/media /home/tobias/mnt"
+	alias kos-home="mount_or_umount_sshfs kos-mos:$HOME $HOME/mnt"
+	alias kos-media="mount_or_umount_sshfs kos-mos:/media $HOME/mnt"
 }
-#grep -q '^.\?dockstar' ~/.ssh/known_hosts && alias dockstar="mount_or_umount_sshfs dockstar:/media /home/tobias/mnt"
 
 true
 # vim: set ts=4 sw=4 ft=zsh:
