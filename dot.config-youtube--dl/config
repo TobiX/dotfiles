@@ -3,12 +3,11 @@
 --restrict-filenames
 # This makes sure to continue with the next file after one download fails
 --ignore-errors
---netrc
 --add-metadata
---prefer-ffmpeg
---mark-watched
 --cookies /home/tobias/.cache/ytdl-cookies.txt
-#--write-info-json
+# Marking things as watched doesn't seem to work
+#--netrc --mark-watched
+#
 # For vimeo:
 #   h264-hd
 # For YouTube:
