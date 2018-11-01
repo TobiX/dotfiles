@@ -1,5 +1,5 @@
 #--console-title
---output "%(title)s-%(fps)sfps-%(id)s.%(ext)s"
+--output "%(title)s-%(upload_date)s-%(fps)sfps-%(id)s.%(ext)s"
 --restrict-filenames
 # This makes sure to continue with the next file after one download fails
 --ignore-errors
