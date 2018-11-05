@@ -24,7 +24,7 @@ then
 		socat UNIX-LISTEN:${SSH_AUTH_SOCK},mode=0600,fork,shut-close,unlink-early \
 			"TCP:localhost:${${$(<$socks)#*>}% *},connect-timeout=2" 2>/dev/null &!
 		functions[zshexit]+="
-			kill $$"
+			kill $!"
 		unset socks
 	fi
 fi
