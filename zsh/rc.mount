@@ -59,14 +59,13 @@ mount_or_umount_pmount () {
 [[ -d /media/nec ]] && alias nec="mount_or_umount_fstab /media/nec"
 [[ -d /media/tosh ]] && alias tosh="mount_or_umount_fstab /media/tosh"
 [[ -d /media/cdrom0 ]] && alias cdrom="mount_or_umount_fstab /media/cdrom0"
-grep -q '^.\?nibbler' ~/.ssh/known_hosts && {
-	alias nib-home="mount_or_umount_sshfs nibbler:$HOME $HOME/mnt"
-	alias nib-media="mount_or_umount_sshfs nibbler:/srv/media $HOME/mnt"
-}
-grep -q '^.\?kos-mos' ~/.ssh/known_hosts && {
-	alias kos-home="mount_or_umount_sshfs kos-mos:$HOME $HOME/mnt"
-	alias kos-media="mount_or_umount_sshfs kos-mos:/media $HOME/mnt"
-}
+if [[ -f ~/.ssh/known_hosts ]]
+then
+	grep -q '^.\?kos-mos' ~/.ssh/known_hosts && {
+		alias kos-home="mount_or_umount_sshfs kos-mos:$HOME $HOME/mnt"
+		alias kos-media="mount_or_umount_sshfs kos-mos:/media $HOME/mnt"
+	}
+fi
 
 true
 # vim: set ts=4 sw=4 ft=zsh:
