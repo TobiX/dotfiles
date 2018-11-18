@@ -19,10 +19,7 @@ Host phone
 Host weltarchiv*
 	User tobix
 
-Host nibbler*
-	Compression no
-
-Host hermes*
+Host hikaru*
 	User root
 
 Host *gnu.org
@@ -33,9 +30,6 @@ Host *.sf.net
 
 Host w8n.koeln.ccc.de
 	Port 2222
-
-Host fork
-	User tobix
 
 Host ssp2*
 	Hostname ssp2.23.gs
