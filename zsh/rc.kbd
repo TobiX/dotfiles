@@ -1,7 +1,12 @@
 # keyboard magic
 bindkey -e
 
-[[ ! -d ${ZDOTDIR:-$HOME}/.zkbd ]] && ln -s $DOTFILES_BASE/zsh/zkbd ${ZDOTDIR:-$HOME}/.zkbd
+
+if [[ ! -d ${ZDOTDIR:-$HOME}/.zkbd ]]
+then
+	autoload -Uz relpath
+	ln -s $(relpath ${ZDOTDIR:-$HOME} $DOTFILES_BASE/zsh/zkbd) ${ZDOTDIR:-$HOME}/.zkbd
+fi
 
 #zkbdfile=${ZDOTDIR:-$HOME}/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE}
 zkbdfile=${ZDOTDIR:-$HOME}/.zkbd/$TERM-$VENDOR-$OSTYPE
