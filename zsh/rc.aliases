@@ -27,12 +27,6 @@ alias -g T='| tail'
 alias -g W='| wc'
 alias -g VP="| curl -F 'text=<-' http://vpaste.net/"
 
-# suffix aliases...
-autoload -Uz zsh-mime-setup
-zsh-mime-setup
-unalias -s pl 2>/dev/null
-unalias -s info 2>/dev/null
-
 # stow, stow, stow your boat... - this really should be the default...
 alias stow="sudo stow -d /usr/local/stow"
 
