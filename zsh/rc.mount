@@ -22,19 +22,9 @@ mount_or_umount () {
 	fi
 }
 
-mount_or_umount_fstab () {
-	local mp="$1"
-	mount_or_umount "$mp" "mount $mp" "umount $mp"
-}
-
 mount_or_umount_sshfs () {
 	local server="$1" mp="$2"
 	mount_or_umount "$mp" "sshfs -o reconnect $server $mp" "fusermount -u $mp"
-}
-
-mount_or_umount_pmount () {
-	local dev="$1" label="$2"
-	mount_or_umount "/media/$label" "pmount $dev $label" "pumount $label"
 }
 
 # mount encfs .<param> onto <param>
@@ -55,10 +45,6 @@ mount_or_umount_pmount () {
 	mount_or_umount "$mp" "encfs $dir $mp" "fusermount -u $mp"
 }
 
-[[ -d /media/lg ]] && alias lg="mount_or_umount_fstab /media/lg"
-[[ -d /media/nec ]] && alias nec="mount_or_umount_fstab /media/nec"
-[[ -d /media/tosh ]] && alias tosh="mount_or_umount_fstab /media/tosh"
-[[ -d /media/cdrom0 ]] && alias cdrom="mount_or_umount_fstab /media/cdrom0"
 if [[ -f ~/.ssh/known_hosts ]]
 then
 	grep -q '^.\?kos-mos' ~/.ssh/known_hosts && {
