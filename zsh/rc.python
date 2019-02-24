@@ -3,9 +3,10 @@ export VIRTUALENV_PYTHON=/usr/bin/python3
 
 for p in /usr/share/virtualenvwrapper /usr/bin
 do
-	if [[ -e $p/virtualenvwrapper.sh ]]
+	if [[ -e $p/virtualenvwrapper_lazy.sh ]]
 	then
-		. $p/virtualenvwrapper.sh
+		. $p/virtualenvwrapper_lazy.sh
+		break
 	fi
 done
 
