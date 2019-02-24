@@ -1,0 +1,14 @@
+# external includes
+
+for inc in \
+	$HOME/.nix-profile/etc/profile.d/nix.sh \
+	/etc/profile.d/devkit-env.sh
+do
+	if [ -e $inc ]
+	then
+		source $inc
+	fi
+done
+unset inc
+
+# vi: set ft=zsh ts=4 sw=4:
