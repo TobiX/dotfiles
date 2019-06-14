@@ -1,2 +1,4 @@
-dot.config-git/credentials
-dot.vim/.netrwhist
+/dot.config-git/credentials
+/dot.vim/.netrwhist
+/dot.vim/autoload/
+/dot.vim/plugged/

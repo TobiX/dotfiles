@@ -2,8 +2,31 @@
 "set guifont=-adobe-courier-medium-r-normal-*-*-100-*-*-m-*-iso10646-1
 "set guifontwide=-adobe-courier-medium-r-normal-*-*-100-*-*-m-*-iso10646-1
 
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-execute pathogen#infect()
+" vim-plug autoinstall with validation, because I'm paranoid
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/08e78d8a5ea874bebbd7f39de7bb540d9b539963/plug.vim
+  if sha256(join(readfile(glob('~/.vim/autoload/plug.vim'), 'b'), "\n")) == 'dfe8982d428de33f2b1315d77f479aa1d354d25d37ae2d2dc105353847022270'
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  else
+    call delete(glob('~/.vim/autoload/plug.vim'))
+  endif
+endif
+
+call plug#begin('~/.vim/plugged')
+Plug 'vim-scripts/DirDiff.vim', { 'commit': '6c111f8b10c464afa45c6b62820bf3b50828c627' }
+Plug 'vim-scripts/LargeFile', { 'commit': '3941a37b2b0288524300348a39521a46539bf9f6' }
+Plug 'exvim/ex-matchit', { 'commit': 'f0ef9f72a5ef37fd69981a5246fd834039f65b90' }
+Plug 'vim-scripts/info.vim', { 'commit': '520a2b33a035770504b37041f12d9017ee213d70' }
+Plug 'jneen/ragel.vim', { 'commit': '898a06e8e0e48b4d589949a29fb511090cdf3f45' }
+Plug 'vim-scripts/taglist.vim', { 'commit': '53041fbc45398a9af631a20657e109707a455339' }
+Plug 'cbracken/vala.vim', { 'commit': '6fdc58c98bdd1e2b10bfbe9999c8a95457b3cd2f' }
+Plug 'nvie/vim-flake8', { 'commit': 'a806163181ad41ec036096a2f235871682fd64cf' }
+Plug 'tpope/vim-fugitive', { 'commit': 'd4fb2a2f5c2023f477beae6aef47cf0457351e6e' }
+Plug 'airblade/vim-gitgutter', { 'commit': '50a7062909d91a290fae04219887b1b45f3138db' }
+Plug 'jamessan/vim-gnupg', { 'commit': '22cbc6b6ab1623edd2e325d256245d21580f912a' }
+Plug 'cespare/vim-toml', { 'commit': '85ba8277a6e331a56fce920d62bfdacce5bc5a80' }
+call plug#end()
 
 if has("gui_gtk")
 	set guifont=Bitstream\ Vera\ Sans\ Mono\ Bold\ 10
