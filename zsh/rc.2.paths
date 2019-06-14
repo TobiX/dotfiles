@@ -27,6 +27,14 @@ do
 	fi
 done
 
+export VITASDK=$HOME/src/vitasdk
+if [[ -d $VITASDK ]]
+then
+	path=($path $VITASDK/bin)
+else
+	unset VITASDK
+fi
+
 # cdpath is strange...
 #for d in ~ ~/src ~/doc /work/tobias
 #do
