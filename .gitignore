@@ -1,4 +1,5 @@
 /dot.config-git/credentials
+/dot.config-git/gitk
 /dot.vim/.netrwhist
 /dot.vim/autoload/
 /dot.vim/plugged/
