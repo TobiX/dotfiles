@@ -29,6 +29,11 @@ Plug 'vim-scripts/info.vim', { 'commit': '520a2b33a035770504b37041f12d9017ee213d
 Plug 'vim-scripts/taglist.vim', { 'commit': '53041fbc45398a9af631a20657e109707a455339' }
 call plug#end()
 
+autocmd VimEnter *
+  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \|   PlugInstall --sync | q
+  \| endif
+
 if has("gui_gtk")
 	set guifont=Bitstream\ Vera\ Sans\ Mono\ Bold\ 10
 endif
