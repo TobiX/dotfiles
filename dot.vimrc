@@ -26,6 +26,7 @@ Plug 'tpope/vim-fugitive', { 'commit': 'd4fb2a2f5c2023f477beae6aef47cf0457351e6e
 Plug 'airblade/vim-gitgutter', { 'commit': '50a7062909d91a290fae04219887b1b45f3138db' }
 Plug 'jamessan/vim-gnupg', { 'commit': '22cbc6b6ab1623edd2e325d256245d21580f912a' }
 Plug 'cespare/vim-toml', { 'commit': '85ba8277a6e331a56fce920d62bfdacce5bc5a80' }
+Plug 'ciaranm/securemodelines', { 'commit': '9751f29699186a47743ff6c06e689f483058d77a' }
 call plug#end()
 
 if has("gui_gtk")
@@ -34,7 +35,6 @@ endif
 
 " overwrite default
 set nocompatible
-set modelines=5
 set backspace=start,indent,eol
 set laststatus=2
 set showcmd
