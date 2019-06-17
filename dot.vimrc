@@ -4,8 +4,12 @@
 
 " vim-plug autoinstall with validation, because I'm paranoid
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+  silent !curl -fLo ~/.vim/autoload/plug.vim
     \ https://raw.githubusercontent.com/junegunn/vim-plug/08e78d8a5ea874bebbd7f39de7bb540d9b539963/plug.vim
+  if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !wget -O ~/.vim/autoload/plug.vim
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/08e78d8a5ea874bebbd7f39de7bb540d9b539963/plug.vim
+  endif
   if sha256(join(readfile(glob('~/.vim/autoload/plug.vim'), 'b'), "\n")) == 'dfe8982d428de33f2b1315d77f479aa1d354d25d37ae2d2dc105353847022270'
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
   else
