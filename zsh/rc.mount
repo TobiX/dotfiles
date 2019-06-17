@@ -51,6 +51,9 @@ then
 		alias kos-home="mount_or_umount_sshfs kos-mos:$HOME $HOME/mnt"
 		alias kos-media="mount_or_umount_sshfs kos-mos:/media $HOME/mnt"
 	}
+	grep -q '^.\?chii' ~/.ssh/known_hosts && {
+		alias chii-home="mount_or_umount_sshfs chii:/home $HOME/mnt"
+	}
 fi
 
 true
