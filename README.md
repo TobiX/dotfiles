@@ -32,5 +32,5 @@ cd dotfiles
 
 # Credits
 
-- @qsuscs for his dead-simple dotfiles setup script.
+- @qsuscs for their dead-simple dotfiles setup script.
 - Sven Guckes for his screenrc.
