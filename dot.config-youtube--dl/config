@@ -9,7 +9,7 @@
 #--netrc --mark-watched
 #
 # For vimeo:
-#   h264-hd
+#   http-1080p
 # For YouTube:
 #  Video is H264 for hardware acceleration
 #   299: DASH 1080p 60fps (too much for old FireTV)
@@ -32,4 +32,4 @@
 # For Heise:
 #   mp4_720p
 --format
-"298+251/137+251/136+251/22/18/720-2200-VA-STA/720-2200-VO/HTTP_MP4_SQ_1/h264-hd/Blip HD 720/Source/live/h264_aac_mp4_http_na_na-veryhigh/h264_aac_mp4_http_na_na-veryhigh-0/mp4_720p"
+"298+251/137+251/136+251/22/18/720-2200-VA-STA/720-2200-VO/HTTP_MP4_SQ_1/http-1080p/Blip HD 720/Source/live/h264_aac_mp4_http_na_na-veryhigh/h264_aac_mp4_http_na_na-veryhigh-0/mp4_720p"
