@@ -40,7 +40,6 @@ Host *
 	ControlMaster auto
 	ControlPath ~/.cache/ssh-master-%h-%p-%r
 	ControlPersist 1
-	PKCS11Provider /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
 	UseRoaming no
 
 # vim: set ft=sshconfig:
