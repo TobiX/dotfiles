@@ -1,30 +1,30 @@
 # keyboard magic
 bindkey -e
 
+#zkbdfile=$DOTFILES_BASE/zsh/zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE}
+zkbdfile=$DOTFILES_BASE/zsh/zkbd/$TERM-$VENDOR-$OSTYPE
 
-if [[ ! -d ${ZDOTDIR:-$HOME}/.zkbd ]]
+if [[ -e $zkbdfile ]]
 then
-	autoload -Uz relpath
-	ln -s $(relpath ${ZDOTDIR:-$HOME} $DOTFILES_BASE/zsh/zkbd) ${ZDOTDIR:-$HOME}/.zkbd
+	source $zkbdfile
+
+	#[[ -n ${key[Left]} ]] && bindkey "${key[Left]}" backward-char
+	#[[ -n ${key[Right]} ]] && bindkey "${key[Right]}" forward-char
+	[[ -n ${key[Delete]} ]] && bindkey "${key[Delete]}" delete-char
+	[[ -n ${key[Home]} ]] && bindkey "${key[Home]}" beginning-of-line
+	[[ -n ${key[End]} ]] && bindkey "${key[End]}" end-of-line
 fi
 
-#zkbdfile=${ZDOTDIR:-$HOME}/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE}
-zkbdfile=${ZDOTDIR:-$HOME}/.zkbd/$TERM-$VENDOR-$OSTYPE
+zkbd_nox() {
+	if [[ ! -d ${ZDOTDIR:-$HOME}/.zkbd ]]
+	then
+		autoload -Uz relpath
+		ln -s $(relpath ${ZDOTDIR:-$HOME} $DOTFILES_BASE/zsh/zkbd) ${ZDOTDIR:-$HOME}/.zkbd
+	fi
 
-autoload -Uz zkbd
-if [[ ! -e $zkbdfile ]]
-then
-	echo "\n-------------"
+	autoload -Uz zkbd
 	DISPLAY= zkbd
-	echo "\n-------------"
-fi
+}
 
-source $zkbdfile
 unset zkbdfile
-
-#[[ -n ${key[Left]} ]] && bindkey "${key[Left]}" backward-char
-#[[ -n ${key[Right]} ]] && bindkey "${key[Right]}" forward-char
-[[ -n ${key[Delete]} ]] && bindkey "${key[Delete]}" delete-char
-[[ -n ${key[Home]} ]] && bindkey "${key[Home]}" beginning-of-line
-[[ -n ${key[End]} ]] && bindkey "${key[End]}" end-of-line
 
