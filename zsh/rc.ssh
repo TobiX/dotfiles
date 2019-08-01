@@ -1,4 +1,6 @@
 # SSH magic
+
+# Link to existing SSH agent
 sshlink="$HOME/.cache/newest-ssh-agent"
 
 if [[ -o login && $SSH_AUTH_SOCK != "" ]]
@@ -13,11 +15,18 @@ unset sshlink
 # CygWin/WSL & KeeAgent
 if [[ $SSH_AUTH_SOCK == "" ]]
 then
-	if [[ -e /home/keeagent.sock ]]
+	wa=/mnt/c/ProgramData/chocolatey/lib/weasel-pageant.portable/tools/weasel-pageant
+	if [[ -e $wa ]]
 	then
+		# PuTTY-agent-to-WSL-bridge
+		eval $($wa -rqb -a $HOME/.cache/weasel-pageant.sock)
+	elif [[ -e /home/keeagent.sock ]]
+	then
+		# Cygwin-KeeAgent
 		export SSH_AUTH_SOCK="/home/keeagent.sock"
 	elif [[ -d /mnt/c/Users && -x =socat ]]
 	then
+		# WSL-to-KeeAgent-bridge
 		# From https://github.com/dlech/KeeAgent/issues/159
 		socks=(/mnt/c/Users/*/ssh_auth_sock_msysgit)
 		export SSH_AUTH_SOCK="$HOME/.cache/keeagent-socket.$$"
@@ -27,6 +36,7 @@ then
 			kill $!"
 		unset socks
 	fi
+	unset wa
 fi
 
 true
