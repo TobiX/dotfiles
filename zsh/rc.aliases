@@ -15,6 +15,9 @@ alias ffmpeg='ffmpeg -hide_banner'
 alias ip='ip --color'
 alias ipb='ip --brief'
 
+# fancy lsblk
+alias lsblk='lsblk -o "NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL"'
+
 # replacement for GREP_OPTIONS (which is obsolete)
 alias grep='grep --color=auto --exclude-dir=.svn --exclude-dir=.tox'
 
