@@ -19,7 +19,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter', { 'commit': '5989eb882e8be27edef5c0738580917d0179626b' }
-Plug 'cbracken/vala.vim', { 'commit': '6fdc58c98bdd1e2b10bfbe9999c8a95457b3cd2f' }
+Plug 'arrufat/vala.vim', { 'commit': 'ad3491464462ea123f8ad2b3b8dfed8dad2e9f0a' }
 Plug 'cespare/vim-toml', { 'commit': '2295e612d936671048035dbc447f5400cbee60de' }
 Plug 'ciaranm/securemodelines', { 'commit': '9751f29699186a47743ff6c06e689f483058d77a' }
 Plug 'exvim/ex-matchit', { 'commit': 'f0ef9f72a5ef37fd69981a5246fd834039f65b90' }
