@@ -4,7 +4,7 @@
 # that binds TCP sockets, XFree86, Xorg and maybe others... (modeled afer the
 # functions in VNC4)
 isdisplayfree () {
-	local d="$1"
+	local d="$1" p f
 	zmodload -i zsh/net/tcp
 
 	for p in 6000 5900

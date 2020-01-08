@@ -2,8 +2,7 @@
 
 # filename editor
 fnedit () {
-	local name=$1
-	oldname=$name
+	local name=$1 oldname=$1
 	vared name
 	if [[ $oldname != $name ]]
 	then
