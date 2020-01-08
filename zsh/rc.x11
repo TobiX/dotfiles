@@ -30,30 +30,20 @@ getfreedisplay () {
 	return 255
 }
 
-# only make wine stuff when the user has a wine directory
-if [[ -e ~/.wine ]]
+if [[ -d ~/.wine.games/drive_c ]]
 then
-	if [[ -d ~/.wine.games/drive_c ]]
-	then
-		alias gwine="WINEPREFIX=~/.wine.games wine"
-		alias gwinecfg="WINEPREFIX=~/.wine.games winecfg"
-	fi
-
-	[[ -d ~/.wine.games/drive_c/Programme/Diablo\ II ]] && diablo2 () {
-		local i lang="${1-nochange}"
-		setopt local_options null_glob
-		pushd ~/.wine.games/drive_c/Programme/Diablo\ II > /dev/null
-		for i in *.$lang; do ln -sf $i ${i:r}; done
-		WINEPREFIX=~/.wine.games wine Game.exe -skiptobnet -direct -d3d
-		popd > /dev/null
-	}
-
-	[[ -d ~/.wine.games/drive_c/Programme/Median\ 2008 ]] && median2008 () {
-		pushd ~/.wine.games/drive_c/Programme/Median\ 2008 > /dev/null
-		WINEPREFIX=~/.wine.games wine Game.exe -skiptobnet -direct -d3d
-		popd > /dev/null
-	}
+	alias gwine="WINEPREFIX=~/.wine.games wine"
+	alias gwinecfg="WINEPREFIX=~/.wine.games winecfg"
 fi
+
+[[ -d ~/.wine.games/drive_c/Program\ Files/Diablo\ II ]] && diablo2 () {
+	local i lang="${1-nochange}"
+	setopt local_options null_glob
+	pushd ~/.wine.games/drive_c/Program\ Files/Diablo\ II > /dev/null
+	for i in *.$lang; do ln -sf $i ${i:r}; done
+	WINEPREFIX=~/.wine.games wine Game.exe -skiptobnet -direct -d3d
+	popd > /dev/null
+}
 
 xinabox () {
 	getfreedisplay
