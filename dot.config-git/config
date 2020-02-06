@@ -21,6 +21,8 @@
 	autoStash = true
 [fetch]
 	prune = true
+[transfer]
+	fsckObjects = true
 [alias]
 	akey = annex examinekey --format='.git/annex/objects/${hashdirmixed}${key}/${key}\n'
 	serve = daemon --reuseaddr --verbose --base-path=. --export-all ./.git
