@@ -38,7 +38,7 @@ Host *
 	CheckHostIP no
 	VisualHostKey yes
 	ControlMaster auto
-	ControlPath ~/.cache/ssh-master-%h-%p-%r
+	ControlPath ~/.cache/ssh-master-%C
 	ControlPersist 1
 	UseRoaming no
 
