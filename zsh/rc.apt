@@ -1,17 +1,18 @@
-
 # Debian Admin stuff
+
 if [[ -x =apt-get ]]
 then
 	if [[ -x =apt ]]
 	then
 		alias agu='sudo apt update'
 		alias agU='sudo apt upgrade'
-		alias agd='sudo apt dist-upgrade'
+		alias agd='sudo apt full-upgrade'
 		alias agi='sudo apt install'
 		alias agr='sudo apt remove'
-		alias agp='sudo apt-get purge'
+		alias agp='sudo apt purge'
 		alias acs='apt show'
 		alias acf='apt search'
+		alias al='apt list'
 	else
 		alias agu='sudo apt-get update'
 		alias agU='sudo apt-get upgrade'
@@ -25,18 +26,13 @@ then
 	
 	if [[ -x =aptitude ]]
 	then
-		alias aiu='sudo aptitude upgrade'
-		alias aid='sudo aptitude dist-upgrade'
+		alias aiu='sudo aptitude safe-upgrade'
+		alias aid='sudo aptitude full-upgrade'
 		alias aii='sudo aptitude install'
 		alias aip='sudo aptitude purge'
 		alias aim='sudo aptitude markauto'
 		alias ais='aptitude search'
 	fi
-
-	alias agc='sudo apt-get clean'
-	alias acp='apt-cache showpkg'
-	[[ -x =debfoster ]] && alias debf='sudo debfoster'
-	[[ -x =m-a ]] && alias m-a='m-a -u ~/src/m-a'
 fi
 
 true
