@@ -5,6 +5,7 @@ for p in /usr/share/virtualenvwrapper /usr/bin
 do
 	if [[ -e $p/virtualenvwrapper_lazy.sh ]]
 	then
+		export WORKON_HOME="$HOME/.local/lib/venvs"
 		. $p/virtualenvwrapper_lazy.sh
 		break
 	fi
