@@ -13,6 +13,8 @@
 	version = 2
 [credential]
 	helper = store
+[init]
+	defaultBranch = main
 [push]
 	default = simple
 [pull]
