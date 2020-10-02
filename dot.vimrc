@@ -22,6 +22,7 @@ Plug 'airblade/vim-gitgutter', { 'commit': '5989eb882e8be27edef5c0738580917d0179
 Plug 'arrufat/vala.vim', { 'commit': 'ad3491464462ea123f8ad2b3b8dfed8dad2e9f0a' }
 Plug 'cespare/vim-toml', { 'commit': '2295e612d936671048035dbc447f5400cbee60de' }
 Plug 'ciaranm/securemodelines', { 'commit': '9751f29699186a47743ff6c06e689f483058d77a' }
+Plug 'dense-analysis/ale', { 'commit': 'b91c6c2edd20794ad5637b561ed4c678647a76e5' }
 Plug 'exvim/ex-matchit', { 'commit': 'f0ef9f72a5ef37fd69981a5246fd834039f65b90' }
 Plug 'jamessan/vim-gnupg', { 'commit': '6219a5a0d70dbc10c5e70289a2c400d6d8b62762' }
 Plug 'jneen/ragel.vim', { 'commit': '898a06e8e0e48b4d589949a29fb511090cdf3f45' }
