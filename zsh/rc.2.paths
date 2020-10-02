@@ -13,6 +13,7 @@ for d in \
 	$DOTFILES_BASE/bin \
 	/usr/games \
 	/var/lib/gems/*/bin \
+	~/.yarn/bin \
 	/var/lib/flatpak/exports/bin
 do
 	[[ -d $d ]] && path=($d $path)
