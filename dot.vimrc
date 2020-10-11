@@ -5,12 +5,12 @@
 " vim-plug autoinstall with validation, because I'm paranoid
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/08e78d8a5ea874bebbd7f39de7bb540d9b539963/plug.vim
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/d16273e07231260e02412625f98651bc6ceebb56/plug.vim
   if empty(glob('~/.vim/autoload/plug.vim'))
     silent !wget -O ~/.vim/autoload/plug.vim
-      \ https://raw.githubusercontent.com/junegunn/vim-plug/08e78d8a5ea874bebbd7f39de7bb540d9b539963/plug.vim
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/d16273e07231260e02412625f98651bc6ceebb56/plug.vim
   endif
-  if sha256(join(readfile(glob('~/.vim/autoload/plug.vim'), 'b'), "\n")) == 'dfe8982d428de33f2b1315d77f479aa1d354d25d37ae2d2dc105353847022270'
+  if sha256(join(readfile(glob('~/.vim/autoload/plug.vim'), 'b'), "\n")) == '502b6704c6628b158b386e6835e2ca80f5faffed88f4d4420009e5b803e9f162'
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
   else
     call delete(glob('~/.vim/autoload/plug.vim'))
@@ -18,16 +18,15 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'airblade/vim-gitgutter', { 'commit': '5989eb882e8be27edef5c0738580917d0179626b' }
-Plug 'arrufat/vala.vim', { 'commit': 'ad3491464462ea123f8ad2b3b8dfed8dad2e9f0a' }
-Plug 'cespare/vim-toml', { 'commit': '2295e612d936671048035dbc447f5400cbee60de' }
+Plug 'airblade/vim-gitgutter', { 'commit': 'ea79bc01c2efc84cf8e71fbe5fd8adbf4242739d' }
+Plug 'arrufat/vala.vim', { 'commit': 'ce569e187bf8f9b506692ef08c10b584595f8e2d' }
+Plug 'cespare/vim-toml', { 'commit': '897cb4eaa81a0366bc859effe14116660d4015cd' }
 Plug 'ciaranm/securemodelines', { 'commit': '9751f29699186a47743ff6c06e689f483058d77a' }
 Plug 'dense-analysis/ale', { 'commit': 'b91c6c2edd20794ad5637b561ed4c678647a76e5' }
 Plug 'exvim/ex-matchit', { 'commit': 'f0ef9f72a5ef37fd69981a5246fd834039f65b90' }
-Plug 'jamessan/vim-gnupg', { 'commit': '6219a5a0d70dbc10c5e70289a2c400d6d8b62762' }
+Plug 'jamessan/vim-gnupg', { 'commit': '90b86c542c40fa8bcee1fbc6ae69650f0280c695' }
 Plug 'jneen/ragel.vim', { 'commit': '898a06e8e0e48b4d589949a29fb511090cdf3f45' }
-Plug 'nvie/vim-flake8', { 'commit': 'ce9ac790430699d346aa074d7f339f2e738284e3' }
-Plug 'tpope/vim-fugitive', { 'commit': '6d42c7df44aa20252e5dac747c3ac9fa7450b21b' }
+Plug 'tpope/vim-fugitive', { 'commit': '4189bdb580743a92f0e81d0ba9359a1c3b253a3c' }
 Plug 'vim-scripts/DirDiff.vim', { 'commit': '6c111f8b10c464afa45c6b62820bf3b50828c627' }
 Plug 'vim-scripts/LargeFile', { 'commit': '3941a37b2b0288524300348a39521a46539bf9f6' }
 Plug 'vim-scripts/info.vim', { 'commit': '520a2b33a035770504b37041f12d9017ee213d70' }
