@@ -14,7 +14,7 @@ replacement scheme similar to systemd's unit files: A single minus (-)
 represents a slash in the target file name, while a minus can be escaped by
 repeating it (--).
 
-## Compatiblity
+## Compatibility
 
 These files are used on Linux systems most of the time. Once upon a time, the
 shell init stuff was compatible with Solaris, but it might not be anymore...
