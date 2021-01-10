@@ -1,4 +1,4 @@
-"set encoding=utf-8
+set encoding=utf-8
 "set guifont=-adobe-courier-medium-r-normal-*-*-100-*-*-m-*-iso10646-1
 "set guifontwide=-adobe-courier-medium-r-normal-*-*-100-*-*-m-*-iso10646-1
 
