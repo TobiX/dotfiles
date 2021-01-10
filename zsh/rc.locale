@@ -6,13 +6,14 @@
 export LANG=C
 export LC_MESSAGES=C
 (( $+commands[locale] )) && function {
-local locales
-locales=( "LANG de_DE.utf8 en_GB.utf8 en_US.utf8 C.UTF-8 C" \
-	"LC_MESSAGES en_GB.utf8 en_US.utf8 de_DE.utf8 C.UTF-8 C" )
+local locales possible l
+locales=( "LANG de_DE en_GB en_US C" \
+	"LC_MESSAGES en_GB en_US de_DE C" )
 for locale in $locales; do
 		for l in $=locale[(w)2,-1]; do
-				if locale -a | grep -qx $l; then
-						export $locale[(w)1]=$l
+				possible=($(locale -a | grep "^$l" | grep -i utf))
+				if [[ $#possible > 0 ]]; then
+						export $locale[(w)1]=$possible[1]
 						break
 				fi
 		done
