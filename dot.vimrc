@@ -121,10 +121,6 @@ set list listchars=tab:»·,trail:·
 set complete=.,w,b,u,t,i,k
 set dictionary+=/usr/share/dict/american-english
 
-" syntax!
-syntax on
-filetype plugin indent on
-
 " key mappings
 set pastetoggle=<F8>
 map <F8>  :set paste?<CR>
