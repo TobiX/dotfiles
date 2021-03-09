@@ -46,4 +46,4 @@
 	required = true
 
 [include]
-	file = ~/doc/secret/git.conf
+	path = ~/doc/secret/git.conf
