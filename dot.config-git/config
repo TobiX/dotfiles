@@ -1,6 +1,7 @@
 [user]
 	name = Tobias Gruetzmacher
 	email = tobias-git@23.gs
+	useConfigOnly = true
 	signingkey = 0EBD3CD637B2EE85
 [color]
 	ui = auto
