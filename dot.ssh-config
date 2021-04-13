@@ -8,9 +8,6 @@ Host kos-mos* may*
 Host weltarchiv* *.aachen.ccc.de *.ccc.ac
 	User tobix
 
-Host hikaru*
-	User root
-
 Host *gnu.org
 	User TobiG
 
