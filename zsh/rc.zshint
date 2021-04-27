@@ -10,6 +10,11 @@ HISTFILE=~/.cache/zsh_history.$UID
 SAVEHIST=200000
 HISTSIZE=200000
 
+# times
+REPORTTIME=2
+REPORTMEMORY=1024
+TIMEFMT="$fg_bold[grey]Took: %U user, %S system, %P cpu, %*E total, max RSS %MkB$reset_color"
+
 # never correct to rm or _*
 CORRECT_IGNORE="_*|rm"
 
