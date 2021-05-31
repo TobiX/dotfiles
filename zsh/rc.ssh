@@ -12,6 +12,17 @@ fi
 
 unset sshlink
 
+# WSL2
+if [[ $SSH_AUTH_SOCK == "" && $WSL_INTEROP != "" && -f /mnt/c/Tools/wsl2-ssh-pageant.exe ]]
+then
+	export SSH_AUTH_SOCK="$HOME/.cache/wsl2-ssh-agent"
+	if ! ss -a 2>&1 | grep -q "$SSH_AUTH_SOCK"
+	then
+		rm -f "$SSH_AUTH_SOCK"
+		(setsid nohup socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:/mnt/c/Tools/wsl2-ssh-pageant.exe >/dev/null 2>&1 &)
+	fi
+fi
+
 # WSL/CygWin
 if [[ $SSH_AUTH_SOCK == "" ]]
 then
