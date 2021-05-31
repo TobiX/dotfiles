@@ -1,4 +1,4 @@
-# "Windows subsystem for Linux" workarounds
+# "Windows subsystem for Linux" workarounds (WSL1 only)
 
 if [[ -f /proc/version && $(</proc/version) == *Microsoft@Microsoft* ]]
 then
