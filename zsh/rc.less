@@ -7,12 +7,14 @@ alias loss=less
 
 export LESS=""
 LESS+=e # quit at 2. EOF
+LESS+=F # Automatically quit if less then one screen to display
 LESS+=f # force open of non-regular files
-LESS+=i # ignore case (ehen no upper case chars in search)
+LESS+=i # ignore case (when no upper case chars in search)
 LESS+=M # very long prompt
 LESS+=R # Interpret color ESCapes
 LESS+=s # fold multiple newlines into one
 LESS+=W # Highlight first "new" line
+LESS+=X # no init
 
 # MOSTly colorful ;)
 if [[ $terminfo[colors] -ge 8 ]]
