@@ -6,12 +6,12 @@ alias loss=less
 [[ -x =lesspipe ]] && eval $(SHELL=zsh lesspipe)
 
 export LESS=""
-LESS+=R # Interpret color ESCapes
+LESS+=e # quit at 2. EOF
+LESS+=f # force open of non-regular files
 LESS+=i # ignore case (ehen no upper case chars in search)
 LESS+=M # very long prompt
+LESS+=R # Interpret color ESCapes
 LESS+=s # fold multiple newlines into one
-LESS+=f # force open of non-regular files
-LESS+=e # quit at 2. EOF
 LESS+=W # Highlight first "new" line
 
 # MOSTly colorful ;)
