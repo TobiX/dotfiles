@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# © 2017-2019 qsuscs, TobiX
+# © 2017-2021 qsuscs, TobiX
 # Should still run with Python 2.7...
 
 from __future__ import print_function, unicode_literals
@@ -10,11 +10,13 @@ import sys
 from glob import glob
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
+home = os.path.realpath(os.path.expanduser('~'))
+
 exit = 0
 
 for f in glob('dot.*'):
-    dst_home = '~/' + f[3:].replace("--", "\ufffd").replace("-", "/").replace("\ufffd", "-")
-    dst = os.path.expanduser(dst_home)
+    dst_home = f[3:].replace("--", "\ufffd").replace("-", "/").replace("\ufffd", "-")
+    dst = home + '/' + dst_home
     src = os.path.join(os.getcwd(), f)
     src_rel = os.path.relpath(src, os.path.dirname(dst))
 
