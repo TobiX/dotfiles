@@ -85,6 +85,7 @@ export WEBPROCESS_HOME=~/doc/dev/webprocess
 export LIBBLURAY_CP="/usr/share/java/libbluray.jar"
 export SDL_VIDEO_FULLSCREEN_HEAD=0
 export MOSH_ESCAPE_KEY="~"
+export XZ_DEFAULTS="-T0"
 
 if [ -e ~/doc/secret/envs ]
 then
