@@ -19,7 +19,9 @@ then
 	if ! ss -a 2>&1 | grep -q "$SSH_AUTH_SOCK"
 	then
 		rm -f "$SSH_AUTH_SOCK"
-		(setsid nohup socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:/mnt/c/Tools/wsl2-ssh-pageant.exe >/dev/null 2>&1 &)
+		pa_sock="$(powershell.exe 'Write-Host (Get-ChildItem \\.\pipe\ | Where-Object { $_.FullName -like "*pageant*" }).Name')"
+		(setsid nohup socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"/mnt/c/Tools/wsl2-ssh-pageant.exe --ssh //./pipe/$pa_sock" >/dev/null 2>&1 &)
+		unset pa_sock
 	fi
 fi
 
