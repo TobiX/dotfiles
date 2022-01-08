@@ -1,0 +1,15 @@
+# settings for rust tooling
+
+export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
+
+function {
+	if [[ ! -d "$CARGO_HOME" ]]
+	then
+		autoload -Uz relpath
+		mkdir -p "$CARGO_HOME" "$HOME/.cache/cargo"
+		ln -s $(relpath "$CARGO_HOME" "$HOME/.local/bin") "$CARGO_HOME/bin"
+		ln -s $(relpath "$CARGO_HOME" "$HOME/.cache/cargo") "$CARGO_HOME/registry"
+	fi
+}
+
+# vi: set ft=zsh ts=4 sw=4:
