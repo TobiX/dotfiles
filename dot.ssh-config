@@ -26,6 +26,9 @@ Host armbuild
 	Hostname 127.0.0.1
 	Port 2222
 
+Host appletv.local
+	KexAlgorithms +diffie-hellman-group-exchange-sha1
+
 Host *
 	Compression yes
 	ServerAliveInterval 30
