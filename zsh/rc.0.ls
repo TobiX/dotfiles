@@ -1,4 +1,4 @@
-# Colors and aliases for ls
+# Colors and aliases for ls/exa
 
 case `ls --version 2>/dev/null` in
 	(*Free Software Foundation*)
@@ -14,8 +14,17 @@ case `ls --version 2>/dev/null` in
 		;;
 esac
 
-alias ll='ls -la'
-alias la='ls -A'
-alias l='ls -l'
+if [[ -x =exa ]]
+then
+	alias ls='exa'
+	alias ll='exa -la'
+	alias la='exa -a'
+	alias l='exa -l'
+	alias tree='exa --tree'
+else
+	alias ll='ls -la'
+	alias la='ls -A'
+	alias l='ls -l'
+fi
 
 # vim: set ft=zsh ts=4 sw=4:
