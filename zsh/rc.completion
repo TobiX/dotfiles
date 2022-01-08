@@ -5,9 +5,10 @@
 #zstyle ':completion:*:hosts' hosts $_ssh_hosts
 
 # Cache for long completion list (e.G. Debian packages)
-mkdir -p ~/.cache/zsh
+zcache="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+mkdir -p "$zcache"
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.cache/zsh
+zstyle ':completion:*' cache-path "$zcache"
 
 # Exclude CVS directories
 zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)CVS' 
@@ -29,7 +30,6 @@ highlights='${PREFIX:+=(#bi)($PREFIX:t)(?)*=00=$color[red]=$color[green];$color[
 zstyle -e ':completion:*' list-colors 'reply=( "'"$highlights"'" ${(s.:.)LS_COLORS} )'
 
 # The following lines were added by compinstall
-
 zstyle ':completion:*' completer _expand _complete
 zstyle ':completion:*' expand prefix suffix
 zstyle ':completion:*' format '---- %d ----'
@@ -45,7 +45,9 @@ zstyle ':completion:*' verbose true
 zstyle :compinstall filename "$DOTFILES_BASE/zsh/rc.completion"
 
 autoload -Uz compinit
-compinit -u
+compinit -u -d "$zcache/zcompdump-$ZSH_VERSION"
 # End of lines added by compinstall
+
+unset zcache
 
 # vim: set ts=4 sw=4:
