@@ -8,7 +8,7 @@
 [github]
 	user = TobiX
 [core]
-	pager = less
+	pager = delta || less
 	autocrlf = input
 [protocol]
 	version = 2
@@ -37,6 +37,7 @@
 	cookiefile = ~/.cache/gitcookies
 [diff]
 	tool = kdiff3
+	colorMoved = default
 [difftool "idiff"]
 	cmd = diff -i $LOCAL $REMOTE
 [filter "lfs"]
@@ -48,6 +49,18 @@
 	sort = authordate
 [column]
 	branch = auto
+[merge]
+	conflictstyle = diff3
+[interactive]
+	diffFilter = ( delta --color-only --features=interactive || cat )
+[delta]
+	line-numbers = true
+	navigate = true
+	hyperlinks = true
+	hunk-header-decoration-style = blue ul
+	file-decoration-style = blue box
+[delta "interactive"]
+	keep-plus-minus-markers = false
 
 [include]
 	path = ~/doc/secret/git.conf
