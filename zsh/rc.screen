@@ -4,32 +4,14 @@ if [[ -x =screen ]]
 then
 	alias s='screen'
 
-	# This works on Linux...
-	get_ppid () {
-		echo ${$(</proc/${1:-$$}/stat)[4]}
-	}
-
 	if [[ -n $STY ]]
 	then
-		# this function tries hard to get the parent of the last screen that
-		# was executed to attach to a running screen. This will not always get
-		# the current runnnig screen, but I found no better way to do this...
-		get_screen_parent () {
-			local repid=$(pgrep -n -u $EUID -f '^screen .*-[[:alpha:]]*[xrR]')
-			if [[ -z $repid ]]
-			then
-				local curpid=$(pgrep -n -u $EUID -f '^SCREEN\b')
-				repid=$(get_ppid $curpid)
-			fi
-			echo $(get_ppid $repid)
-		}
-
 		# Now for the bigger magic
 		functions[precmd]="${functions[precmd]//screen_magic_precmd}
 			screen_magic_precmd"
 
 		screen_magic_precmd () {
-			local parent=$(get_screen_parent)
+			local parent=$(_get_screen_parent)
 			if [[ $parent != $screen_magic_lastparent && -r /proc/$parent/environ ]]
 			then
 				# Do real magic!

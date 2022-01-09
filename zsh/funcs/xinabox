@@ -1,0 +1,12 @@
+
+_getfreedisplay
+local display=$?
+if [[ $display != 255 ]]
+then
+	Xephyr :$display -screen 1024x768 &
+	sleep 1
+	DISPLAY=:$display openbox &
+#	xkbcomp $DISPLAY :$display
+fi
+
+# vi: set ft=zsh ts=4 sw=4:

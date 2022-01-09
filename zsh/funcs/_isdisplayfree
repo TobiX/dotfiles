@@ -1,0 +1,21 @@
+# This checks if a specific display is available, covered are VNC, every X11
+# that binds TCP sockets, XFree86, Xorg and maybe others... (modeled afer the
+# functions in VNC4)
+
+local d="$1" p f
+zmodload -i zsh/net/tcp
+
+for p in 6000 5900
+do
+	ztcp -l $(($p + $d)) 2>/dev/null || return 1
+	ztcp -c
+done
+
+for f in /tmp/.X$d-lock /tmp/.X11-unix/X$d /usr/spool/sockets/X11/$d
+do
+	[[ -e $f ]] && return 1
+done
+
+return 0
+
+# vi: set ft=zsh ts=4 sw=4:

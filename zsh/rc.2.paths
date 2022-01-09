@@ -22,6 +22,7 @@ done
 for d in $DOTFILES_BASE/zsh/funcs
 do
 	[[ -d $d ]] && fpath=($d $fpath)
+	autoload -Uz $d/*(.:t)
 done
 
 for d in ~/src/go

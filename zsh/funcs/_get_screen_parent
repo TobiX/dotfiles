@@ -1,0 +1,13 @@
+# this function tries hard to get the parent of the last screen that
+# was executed to attach to a running screen. This will not always get
+# the current runnnig screen, but I found no better way to do this...
+
+local repid=$(pgrep -n -u $EUID -f '^screen .*-[[:alpha:]]*[xrR]')
+if [[ -z $repid ]]
+then
+	local curpid=$(pgrep -n -u $EUID -f '^SCREEN\b')
+	repid=$(_get_ppid $curpid)
+fi
+echo $(_get_ppid $repid)
+
+# vi: set ts=4 sw=4 ft=zsh:

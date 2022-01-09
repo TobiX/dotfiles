@@ -1,0 +1,4 @@
+local server="$1" mp="$2"
+_mount_or_umount "$mp" "sshfs -o reconnect $server $mp" "fusermount -u $mp"
+
+# vim: set ts=4 sw=4 ft=zsh:

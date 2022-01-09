@@ -2,16 +2,6 @@
 
 [[ -x =pmount ]] && alias pmount="pmount -e"
 
-mount_or_umount () {
-	local mp="$1" m="$2" um="$3"
-	if mount | grep -q " on $mp type "
-	then
-		${=um} && echo "$mp $bg_bold[red]umounted$reset_color"
-	else
-		${=m} && echo "$mp $bg_bold[green]mounted$reset_color"
-	fi
-}
-
 # remount root as ro or rw (embedded)
 [[ -x /sbin/init-ro ]] && root () {
 	if mount | grep -q " on / type .*ro"
@@ -20,11 +10,6 @@ mount_or_umount () {
 	else
 		sudo mount -o remount,ro / && echo "root $bg_bold[green]read-only$reset_color"
 	fi
-}
-
-mount_or_umount_sshfs () {
-	local server="$1" mp="$2"
-	mount_or_umount "$mp" "sshfs -o reconnect $server $mp" "fusermount -u $mp"
 }
 
 # mount encfs .<param> onto <param>
@@ -42,17 +27,17 @@ mount_or_umount_sshfs () {
 	fi
 	mp=`cd $mp; pwd`
 
-	mount_or_umount "$mp" "encfs $dir $mp" "fusermount -u $mp"
+	_mount_or_umount "$mp" "encfs $dir $mp" "fusermount -u $mp"
 }
 
 if [[ -f ~/.ssh/known_hosts ]]
 then
 	grep -q '^.\?kos-mos' ~/.ssh/known_hosts && {
-		alias kos-home="mount_or_umount_sshfs kos-mos:$HOME $HOME/mnt"
-		alias kos-media="mount_or_umount_sshfs kos-mos:/media $HOME/mnt"
+		alias kos-home="_mount_or_umount_sshfs kos-mos:$HOME $HOME/mnt"
+		alias kos-media="_mount_or_umount_sshfs kos-mos:/media $HOME/mnt"
 	}
 	grep -q '^.\?chii' ~/.ssh/known_hosts && {
-		alias chii-home="mount_or_umount_sshfs chii:/home $HOME/mnt"
+		alias chii-home="_mount_or_umount_sshfs chii:/home $HOME/mnt"
 	}
 fi
 

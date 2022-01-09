@@ -1,0 +1,10 @@
+
+local mp="$1" m="$2" um="$3"
+if mount | grep -q " on $mp type "
+then
+	${=um} && echo "$mp $bg_bold[red]umounted$reset_color"
+else
+	${=m} && echo "$mp $bg_bold[green]mounted$reset_color"
+fi
+
+# vim: set ts=4 sw=4 ft=zsh:

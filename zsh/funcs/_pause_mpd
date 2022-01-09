@@ -1,0 +1,12 @@
+setopt localoptions
+local mpdplaying
+if [[ `mpc` == *\[playing\]* ]]; then
+	mpdplaying=1
+	mpc pause >/dev/null
+fi
+$@
+if [[ -n $mpdplaying ]]; then
+	mpc play >/dev/null
+fi
+
+# vi: set ts=4 sw=4 ft=zsh:

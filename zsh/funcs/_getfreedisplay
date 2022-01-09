@@ -1,0 +1,9 @@
+# Get the next free X Display
+
+for i in {0..99}
+do
+	_isdisplayfree $i && return $i
+done
+return 255
+
+# vi: set ft=zsh ts=4 sw=4:

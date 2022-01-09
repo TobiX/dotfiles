@@ -1,0 +1,4 @@
+# This works on Linux...
+echo ${$(</proc/${1:-$$}/stat)[4]}
+
+# vi: set ts=4 sw=4 ft=zsh:

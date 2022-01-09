@@ -25,8 +25,7 @@ then
 fi
 
 # Nice extensions
-autoload -Uz zmv zcalc zargs shuffle
-autoload -Uz keeper && keeper
+autoload -Uz zmv zcalc zargs
 
 # hide values in set
 typeset -H key _comps _postpatcomps _patcomps _services _comp_setup \
