@@ -2,6 +2,19 @@ set encoding=utf-8
 "set guifont=-adobe-courier-medium-r-normal-*-*-100-*-*-m-*-iso10646-1
 "set guifontwide=-adobe-courier-medium-r-normal-*-*-100-*-*-m-*-iso10646-1
 
+" save info/swap in XDG cache dir
+if !has('win32')
+  if empty($XDG_CACHE_HOME)
+    let $XDG_CACHE_HOME = $HOME."/.cache"
+  endif
+  call mkdir($XDG_CACHE_HOME."/vim", 'p', 0700)
+
+  set directory=.,$XDG_CACHE_HOME/vim
+  if !has('nvim') " Neovim has its own special location
+    set viminfofile=$XDG_CACHE_HOME/vim/viminfo
+  endif
+endif
+
 " vim-plug autoinstall with validation, because I'm paranoid
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim
@@ -143,16 +156,8 @@ map Q gq
 
 " ===================================================================
 " VIM - Editing and updating the vimrc:
-" As I often make changes to this file I use these commands
-" to start editing it and also update it:
-  if has("unix")
-    let vimrc='~/.vimrc'
-  else
-" ie:  if has("dos16") || has("dos32") || has("win32")
-    let vimrc='$VIM\_vimrc'
-  endif
-  nn  ,u :source <C-R>=vimrc<CR><CR>
-  nn  ,v :edit   <C-R>=vimrc<CR><CR>
+nn  ,u :source $MYVIMRC<CR>
+nn  ,v :edit   $MYVIMRC<CR>
 " ===================================================================
 
 "       ,# = comment current inner paragraph with '#':
