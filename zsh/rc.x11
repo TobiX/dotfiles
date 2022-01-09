@@ -30,20 +30,20 @@ getfreedisplay () {
 	return 255
 }
 
-if [[ -d ~/.wine.games/drive_c ]]
-then
-	alias gwine="WINEPREFIX=~/.wine.games wine"
-	alias gwinecfg="WINEPREFIX=~/.wine.games winecfg"
-fi
+wineprefixes="${XDG_DATA_HOME:-$HOME/.local/share}/wineprefixes"
+export WINEPREFIX="$wineprefixes/default"
 
-[[ -d ~/.wine.games/drive_c/Program\ Files/Diablo\ II ]] && diablo2 () {
+[[ -d "$wineprefixes/diablo2" ]] && diablo2 () {
 	local i lang="${1-nochange}"
+	local d2="${XDG_DATA_HOME:-$HOME/.local/share}/wineprefixes/diablo2"
 	setopt local_options null_glob
-	pushd ~/.wine.games/drive_c/Program\ Files/Diablo\ II > /dev/null
+	pushd "$d2/drive_c/Program Files/Diablo II" > /dev/null
 	for i in *.$lang; do ln -sf $i ${i:r}; done
-	WINEPREFIX=~/.wine.games wine Game.exe -skiptobnet -direct -d3d
+	WINEPREFIX="$d2" wine Game.exe -w -direct -d3d
 	popd > /dev/null
 }
+
+unset wineprefixes
 
 xinabox () {
 	getfreedisplay
