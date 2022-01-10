@@ -30,6 +30,15 @@ cd dotfiles
 ./setup.py  # or python setup.py
 ```
 
+## Optional dependencies
+
+- Install [exa] for fancier `ls`
+- Install [delta] (`cargo install git-delta`)  for fancier `git diffs`
+- Remember that hyperlinks need to be enabled in Konsole
+
+[exa]: https://github.com/ogham/exa
+[delta]: https://github.com/dandavison/delta
+
 # Credits
 
 - @qsuscs for their dead-simple dotfiles setup script.
