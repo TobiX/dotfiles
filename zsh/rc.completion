@@ -50,4 +50,10 @@ compinit -u -d "$zcache/zcompdump-$ZSH_VERSION"
 
 unset zcache
 
-# vim: set ts=4 sw=4:
+# wormhole completion
+if [[ -x =wormhole ]]
+then
+	eval "$(_WORMHOLE_COMPLETE=zsh_source wormhole)"
+fi
+
+# vim: set ts=4 sw=4 ft=zsh:
