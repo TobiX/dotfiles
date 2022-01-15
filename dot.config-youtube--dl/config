@@ -25,11 +25,13 @@
 #   720-2200-VO
 #   HTTP_MP4_SQ_1: mp4, 1280x720, VA-STA, Dt. Version 2200k
 # For twitch.tv:
-#   live - "Archive"
+#   720p
+#   720p60
+#   1080p60__source_
 # For ZDF Mediathek:
 #   h264_aac_mp4_http_na_na-veryhigh: mp4, 852x480, h264@1400k, aac@56k
 #   h264_aac_mp4_http_na_na-veryhigh-0: mp4, 852x480, h264@1400k, aac@56k
 # For Heise:
 #   mp4_720p
 --format
-"298+251/137+251/136+251/22/18/720-2200-VA-STA/720-2200-VO/HTTP_MP4_SQ_1/http-1080p/Blip HD 720/Source/live/h264_aac_mp4_http_na_na-veryhigh/h264_aac_mp4_http_na_na-veryhigh-0/mp4_720p"
+"298+251/137+251/136+251/22/18/720-2200-VA-STA/720-2200-VO/HTTP_MP4_SQ_1/http-1080p/Blip HD 720/h264_aac_mp4_http_na_na-veryhigh/h264_aac_mp4_http_na_na-veryhigh-0/1080p60_source_/1080p60/720p/mp4_720p"
