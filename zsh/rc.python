@@ -18,4 +18,12 @@ then
 	eval "$(pyenv init -)"
 fi
 
+if [[ -x =register-python-argcomplete ]]
+then
+	autoload -U bashcompinit
+	bashcompinit
+
+	eval "$(register-python-argcomplete pipx)"
+fi
+
 # vim: set ts=4 sw=4 ft=zsh:
