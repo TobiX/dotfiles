@@ -19,4 +19,7 @@ setopt    share_history		# Some shared history!
 setopt    hist_ignore_dups	# No duplicates in the history
 setopt    hist_ignore_space	# Remove commands beginning with space from the history
 
+# Put ZLE into Emacs mode
+bindkey -e
+
 # vim: set ts=4 sw=4 ft=zsh:
