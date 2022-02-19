@@ -1,7 +1,5 @@
 # Some nice mounting stuff
 
-[[ -x =pmount ]] && alias pmount="pmount -e"
-
 # remount root as ro or rw (embedded)
 [[ -x /sbin/init-ro ]] && root () {
 	if mount | grep -q " on / type .*ro"
