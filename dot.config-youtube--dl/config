@@ -18,6 +18,7 @@
 #   136: DASH 720p 30fps
 #   251: DASH Opus 160k
 #   140: DASH AAC 128k
+#    96: 1080p 30fps (live)
 #    22: 720p
 #    18: 360p
 # For arte.tv:
@@ -34,4 +35,4 @@
 # For Heise:
 #   mp4_720p
 --format
-"298+251/137+251/136+251/22/18/720-2200-VA-STA/720-2200-VO/HTTP_MP4_SQ_1/http-1080p/Blip HD 720/h264_aac_mp4_http_na_na-veryhigh/h264_aac_mp4_http_na_na-veryhigh-0/1080p60_source_/1080p60/720p/mp4_720p"
+"298+251/137+251/136+251/96/22/18/720-2200-VA-STA/720-2200-VO/HTTP_MP4_SQ_1/http-1080p/Blip HD 720/h264_aac_mp4_http_na_na-veryhigh/h264_aac_mp4_http_na_na-veryhigh-0/1080p60_source_/1080p60/720p/mp4_720p"
