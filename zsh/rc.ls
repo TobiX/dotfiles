@@ -20,7 +20,10 @@ then
 	alias ll='exa -la'
 	alias la='exa -a'
 	alias l='exa -l'
-	alias tree='exa --tree'
+	if [[ ! -x =tree ]]
+	then
+		alias tree='exa --tree'
+	fi
 else
 	alias ll='ls -la'
 	alias la='ls -A'
