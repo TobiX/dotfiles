@@ -1,7 +1,10 @@
 # X11 related functions
 
 wineprefixes="${XDG_DATA_HOME:-$HOME/.local/share}/wineprefixes"
-export WINEPREFIX="$wineprefixes/default"
+if [[ $WINEPREFIX == "" ]]
+then
+	export WINEPREFIX="$wineprefixes/default"
+fi
 
 [[ -d "$wineprefixes/diablo2" ]] && diablo2 () {
 	local i lang="${1-nochange}"
