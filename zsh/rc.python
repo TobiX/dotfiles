@@ -18,12 +18,23 @@ then
 	eval "$(pyenv init -)"
 fi
 
-if [[ -x =register-python-argcomplete ]]
+for p in register-python-argcomplete register-python-argcomplete3
+do
+	if whence -p $p &> /dev/null
+	then
+		register_argcomp=$p
+		break
+	fi
+done
+
+if [[ $register_argcomp && -x =pipx ]]
 then
 	autoload -U bashcompinit
 	bashcompinit
 
-	eval "$(register-python-argcomplete pipx)"
+	eval "$($register_argcomp pipx)"
 fi
+
+unset p register_argcomp
 
 # vim: set ts=4 sw=4 ft=zsh:
