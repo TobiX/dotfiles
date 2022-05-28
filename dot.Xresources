@@ -32,13 +32,6 @@ URxvt.color13: #ff55ff
 URxvt.color14: #55ffff
 URxvt.color15: #ffffff
 
-
-#if WIDTH > 800
-URxvt.font: xft:Terminus:size=10:antialias=true,\
-	xft:Bitstream Vera Sans Mono:size=10:antialias=true
-#else
-URxvt.font: xft:Terminus:size=9:antialias=true,
-	xft:Bitstream Vera Sans Mono:size=9:antialias=true
-#endif
+URxvt.font: xft:Hack:fontsize=10:antialias=true,\
+	xft:DejaVu Sans Mono:fontsize=10:antialias=true
 URxvt.print-pipe: cat > $(mktemp urxvt.XXXXXX)
-

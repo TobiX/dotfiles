@@ -1,6 +1,4 @@
 set encoding=utf-8
-"set guifont=-adobe-courier-medium-r-normal-*-*-100-*-*-m-*-iso10646-1
-"set guifontwide=-adobe-courier-medium-r-normal-*-*-100-*-*-m-*-iso10646-1
 
 " save info/swap in XDG cache dir
 if !has('win32')
@@ -53,7 +51,7 @@ autocmd VimEnter *
   \| endif
 
 if has("gui_gtk")
-	set guifont=Bitstream\ Vera\ Sans\ Mono\ Bold\ 10
+	set guifont=Hack\ 10
 endif
 
 " overwrite default
