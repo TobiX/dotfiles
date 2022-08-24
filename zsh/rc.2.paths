@@ -25,14 +25,12 @@ do
 	autoload -Uz $d/*(.:t)
 done
 
-for d in ~/src/go
-do
-	if [[ -d $d ]]
-	then
-		export GOPATH=$d
-		path+=$d/bin
-	fi
-done
+if [[ -d ~/src ]]
+then
+	mkdir -p "$HOME/src/go/bin"
+	export GOPATH=$HOME/src/go
+	path+=$GOPATH/bin
+fi
 
 export VITASDK=$HOME/src/vitasdk
 if [[ -d $VITASDK ]]
