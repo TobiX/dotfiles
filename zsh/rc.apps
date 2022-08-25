@@ -53,6 +53,15 @@ then
 	}
 fi
 
+# PostgreSQL XDG redirects
+if [[ -x =psql ]]
+then
+	export PSQLRC="${XDG_CONFIG_HOME:-$HOME/.config}/pg/psqlrc"
+	export PSQL_HISTORY="${XDG_CACHE_HOME:-$HOME/.cache}/psql_history"
+	export PGPASSFILE="${XDG_CONFIG_HOME:-$HOME/.config}/pg/pgpass"
+	export PGSERVICEFILE="${XDG_CONFIG_HOME:-$HOME/.config}/pg/pg_service.conf"
+fi
+
 # local VNC stuff
 [[ -x =vncserver ]] && alias vnc-run='vncserver -geometry 1200x600 -depth 15 -localhost'
 [[ -x =xvncviewer ]] && alias vnc-view='xvncviewer -passwd ~/.vnc/passwd :1'
