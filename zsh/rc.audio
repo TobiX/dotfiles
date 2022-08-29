@@ -3,10 +3,6 @@
 # Call a program without music ;)
 if [[ -e =mpc ]]
 then
-	[[ -e =mplayer ]] && alias mplayer="_pause_mpd command mplayer"
-	[[ -e =ut ]] && alias ut="_pause_mpd command ut"
-	[[ -e =mpv ]] && alias mpv="_pause_mpd command mpv"
-
 	if grep -q "^ *bind_to_address.*socket" ~/.config/mpd/mpd.conf 2>/dev/null
 	then
 		export MPD_HOST=$XDG_RUNTIME_DIR/mpd.socket
