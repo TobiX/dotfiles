@@ -9,6 +9,8 @@
 	ui = auto
 [column]
 	branch = auto
+[commit]
+	gpgsign = true
 [core]
 	autocrlf = input
 	pager = delta || less
@@ -36,6 +38,11 @@
 	smudge = git-lfs smudge -- %f
 [github]
 	user = TobiX
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = ~/.ssh/allowed_signers
+	defaultKeyCommand = ssh-add -L | grep signing
 [http]
 	cookiefile = ~/.cache/gitcookies
 [init]
@@ -59,7 +66,6 @@
 [user]
 	email = tobias-git@23.gs
 	name = Tobias Gruetzmacher
-	signingkey = 0EBD3CD637B2EE85
 	useConfigOnly = true
 
 [include]
