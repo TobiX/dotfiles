@@ -1,66 +1,66 @@
-[user]
-	name = Tobias Gruetzmacher
-	email = tobias-git@23.gs
-	useConfigOnly = true
-	signingkey = 0EBD3CD637B2EE85
-[color]
-	ui = auto
-[github]
-	user = TobiX
-[core]
-	pager = delta || less
-	autocrlf = input
-[protocol]
-	version = 2
-[credential]
-	helper = store
-[init]
-	defaultBranch = main
-[push]
-	default = simple
-[pull]
-	rebase = true
-[rebase]
-	autoStash = true
-[fetch]
-	prune = true
-[transfer]
-	fsckObjects = true
 [alias]
 	akey = annex examinekey --format='.git/annex/objects/${hashdirmixed}${key}/${key}\n'
+	fush = push --force-with-lease
 	serve = daemon --reuseaddr --verbose --base-path=. --export-all ./.git
 	timeline = log --oneline --graph --decorate
-	fush = push --force-with-lease
-[rerere]
-	enabled = true
-[http]
-	cookiefile = ~/.cache/gitcookies
-[diff]
-	tool = kdiff3
-	colorMoved = default
-[difftool "idiff"]
-	cmd = diff -i $LOCAL $REMOTE
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
 [branch]
 	sort = authordate
+[color]
+	ui = auto
 [column]
 	branch = auto
-[merge]
-	conflictstyle = diff3
-[interactive]
-	diffFilter = ( delta --color-only --features=interactive || cat )
+[core]
+	autocrlf = input
+	pager = delta || less
+[credential]
+	helper = store
 [delta]
+	file-decoration-style = blue box
+	hunk-header-decoration-style = blue ul
+	hyperlinks = true
 	line-numbers = true
 	navigate = true
-	hyperlinks = true
-	hunk-header-decoration-style = blue ul
-	file-decoration-style = blue box
 [delta "interactive"]
 	keep-plus-minus-markers = false
+[diff]
+	colorMoved = default
+	tool = kdiff3
+[difftool "idiff"]
+	cmd = diff -i $LOCAL $REMOTE
+[fetch]
+	prune = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	process = git-lfs filter-process
+	required = true
+	smudge = git-lfs smudge -- %f
+[github]
+	user = TobiX
+[http]
+	cookiefile = ~/.cache/gitcookies
+[init]
+	defaultBranch = main
+[interactive]
+	diffFilter = ( delta --color-only --features=interactive || cat )
+[merge]
+	conflictstyle = diff3
+[protocol]
+	version = 2
+[pull]
+	rebase = true
+[push]
+	default = simple
+[rebase]
+	autoStash = true
+[rerere]
+	enabled = true
+[transfer]
+	fsckObjects = true
+[user]
+	email = tobias-git@23.gs
+	name = Tobias Gruetzmacher
+	signingkey = 0EBD3CD637B2EE85
+	useConfigOnly = true
 
 [include]
 	path = ~/doc/secret/git.conf
