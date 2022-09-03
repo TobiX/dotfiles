@@ -63,6 +63,8 @@
 	enabled = true
 [transfer]
 	fsckObjects = true
+[url "https://"]
+	insteadOf = git://
 [user]
 	email = tobias-git@23.gs
 	name = Tobias Gruetzmacher
