@@ -12,16 +12,14 @@ fi
 
 unset sshlink
 
-# WSL2
-if [[ $SSH_AUTH_SOCK == "" && $WSL_INTEROP != "" && -f /mnt/c/Tools/wsl2-ssh-pageant.exe ]]
+# WSL2 + Windows OpenSSH
+if [[ $SSH_AUTH_SOCK == "" && $WSL_INTEROP != "" && -x =npiperelay.exe ]]
 then
 	export SSH_AUTH_SOCK="$HOME/.cache/wsl2-ssh-agent"
 	if ! ss -a 2>&1 | grep -q "$SSH_AUTH_SOCK"
 	then
 		rm -f "$SSH_AUTH_SOCK"
-		pa_sock="$(powershell.exe 'Write-Host (Get-ChildItem \\.\pipe\ | Where-Object { $_.FullName -like "*pageant*" }).Name')"
-		(setsid nohup socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"/mnt/c/Tools/wsl2-ssh-pageant.exe --ssh //./pipe/$pa_sock" >/dev/null 2>&1 &)
-		unset pa_sock
+		(setsid nohup socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"npiperelay.exe -ei -s //./pipe/openssh-ssh-agent" >/dev/null 2>&1 &)
 	fi
 fi
 
