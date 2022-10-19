@@ -38,6 +38,6 @@ alias -g W='| wc'
 alias -g VP="| curl -F 'text=<-' http://vpaste.net/"
 
 # stow, stow, stow your boat... - this really should be the default...
-alias stow="sudo stow -d /usr/local/stow"
+alias stow="$rootcmd stow -d /usr/local/stow"
 
 # vi: set ft=zsh ts=4 sw=4:

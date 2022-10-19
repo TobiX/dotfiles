@@ -10,6 +10,13 @@ then
 	colors
 fi
 
+if [[ -x =doas ]]
+then
+	rootcmd=doas
+else
+	rootcmd=sudo
+fi
+
 __thiszshrc="${ZDOTDIR:-$HOME}/.zshrc"
 export DOTFILES_BASE="$__thiszshrc:A:h"
 unset __thiszshrc
@@ -24,6 +31,6 @@ do
 	[[ $? -ne 0 ]] && { [[ $V == 1 ]] && echo "\e[$#script:eD$fg[red]$script:e$reset_color\c" || echo "\e[1D$fg[red].$reset_color\c" }
 done
 [[ $V == 1 ]] && echo "." || echo
-unset script
+unset script rootcmd
 
 # vi: set ts=4 sw=4 ft=zsh:
