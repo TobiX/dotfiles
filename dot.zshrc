@@ -10,12 +10,17 @@ then
 	colors
 fi
 
-if [[ -x =doas ]]
-then
-	rootcmd=doas
-else
-	rootcmd=sudo
-fi
+def_rootcmd() {
+	setopt localoptions nonomatch
+	if [[ -x =doas ]]
+	then
+		rootcmd==doas
+	else
+		rootcmd==sudo
+	fi
+}
+def_rootcmd
+unfunction def_rootcmd
 
 __thiszshrc="${ZDOTDIR:-$HOME}/.zshrc"
 export DOTFILES_BASE="$__thiszshrc:A:h"
