@@ -37,4 +37,15 @@ fi
 
 unset p register_argcomp
 
+if [[ -x =poetry ]]
+then
+	funcdir="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/funcs"
+	mkdir -p "$funcdir"
+	if [[ "$funcdir/_poetry" -ot =poetry ]]
+	then
+		poetry completions zsh > "$funcdir/_poetry"
+	fi
+	unset funcdir
+fi
+
 # vim: set ts=4 sw=4 ft=zsh:

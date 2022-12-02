@@ -19,7 +19,9 @@ do
 	[[ -d $d ]] && path=($d $path)
 done
 
-for d in $DOTFILES_BASE/zsh/funcs
+for d in \
+	$DOTFILES_BASE/zsh/funcs \
+	"${XDG_CACHE_HOME:-$HOME/.cache}/zsh/funcs"
 do
 	[[ -d $d ]] && fpath=($d $fpath)
 	autoload -Uz $d/*(.:t)
