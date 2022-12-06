@@ -41,7 +41,7 @@ if [[ -x =poetry ]]
 then
 	funcdir="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/funcs"
 	mkdir -p "$funcdir"
-	if [[ "$funcdir/_poetry" -ot =poetry ]]
+	if [[ ! -f "$funcdir/_poetry" || "$funcdir/_poetry" -ot =poetry ]]
 	then
 		poetry completions zsh > "$funcdir/_poetry"
 	fi
