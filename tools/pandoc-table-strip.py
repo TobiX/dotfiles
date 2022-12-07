@@ -1,25 +1,36 @@
 #!/usr/bin/env python3
 # from https://gist.github.com/emcconville/56a5da54ce9ac7cfeced
+# repaired for newer versions of pandoc
+# cf. https://hackage.haskell.org/package/pandoc-types-1.22.2.1/docs/Text-Pandoc-Definition.html
 
 from sys import stdin, stdout, stderr
 import json
 
-
-def extractTable(t,c):
+def extractTable(t, c):
     if t == 'Table':
         embeddedElements = []
-        # We want to preserver the top-down / left-right order
-        for row in c[4]:
-            for column in row:
-                for el in column:
+        if len(c) < 6:
+            raise NotImplementedError('Sorry, your pandoc is too old')
+        rows = []
+        if c[3]:  # Headers
+            rows.extend(c[3][1])
+        if c[4]:  # Bodies
+            for body in c[4]:
+                rows.extend(body[2])
+                rows.extend(body[3])
+        if c[5]:  # Footer
+            rows.extend(c[5][1])
+        for row in rows:
+            for cell in row[1]:
+                for node in cell[4]:
                     # Check if we have an embedded table
-                    if 't' in el and el['t'] == 'Table':
-                        embeddedElements.extend(extractTable(el['t'],el['c']))
+                    if 't' in node and node['t'] == 'Table':
+                        embeddedElements.extend(extractTable(node['t'], node['c']))
                     else:
                         # Inject empty block to restore formatting inherited by table
                         block = {'t': 'Plain', 'c': [{'t': 'LineBreak', 'c': []}]}
                         embeddedElements.append(block)
-                        embeddedElements.append(el)
+                        embeddedElements.append(node)
         return embeddedElements
     return None
 
