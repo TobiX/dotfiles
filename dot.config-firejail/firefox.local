@@ -13,5 +13,7 @@ private-etc alternatives,asound.conf,ca-certificates,crypto-policies,dconf,firef
 
 # Allow KeePassXC integration
 whitelist ${RUNUSER}/org.keepassxc.KeePassXC.BrowserServer
+noblacklist ${RUNUSER}/app
+whitelist ${RUNUSER}/app/org.keepassxc.KeePassXC
 # More convinient, but less secure
 #ignore include whitelist-runuser-common.inc
