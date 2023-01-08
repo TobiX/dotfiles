@@ -93,6 +93,7 @@ export DI_ARGS="-x tmpfs,devtmpfs,ntfs -h"  # statfs64 is slooooooow on ntfs...
 export WEBPROCESS_HOME=~/doc/dev/webprocess
 export LIBBLURAY_CP="/usr/share/java/libbluray.jar"
 export DVDCSS_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}"/dvdcss
+export SQLITE_HISTORY="${XDG_CACHE_HOME:-$HOME/.cache}"/sqlite_history
 export MOSH_ESCAPE_KEY="~"
 export XZ_DEFAULTS="-T0"
 
