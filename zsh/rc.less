@@ -16,6 +16,8 @@ LESS+=s # fold multiple newlines into one
 LESS+=W # Highlight first "new" line
 LESS+=X # no init
 
+export LESSHISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/less_history"
+
 # MOSTly colorful ;)
 if [[ $terminfo[colors] -ge 8 ]]
 then
