@@ -3,6 +3,10 @@
 	fush = push --force-with-lease
 	serve = daemon --reuseaddr --verbose --base-path=. --export-all ./.git
 	timeline = log --oneline --graph --decorate
+[blame]
+	ignoreRevsFile = .git-blame-ignore-revs
+	markIgnoredLines = true
+	markUnblamableLines = true
 [branch]
 	sort = authordate
 [color]
