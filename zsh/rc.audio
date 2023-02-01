@@ -3,12 +3,14 @@
 # Call a program without music ;)
 if [[ -e =mpc ]]
 then
-	if grep -q "^ *bind_to_address.*socket" ~/.config/mpd/mpd.conf 2>/dev/null
+	mpd_maybe_socket="$(sed -n '/^ *bind_to_address.*socket/ s/.*"\(.*\)"/\1/p' ~/.config/mpd/mpd.conf 2> /dev/null)"
+	if [[ $mpd_maybe_socket != "" ]]
 	then
-		export MPD_HOST=$XDG_RUNTIME_DIR/mpd.socket
+		export MPD_HOST=$mpd_maybe_socket
 	else
 		unset MPD_HOST
 	fi
+	unset mpd_maybe_socket
 fi
 
 export ALSA_OUTPUT_PORTS="65:0"
