@@ -53,6 +53,15 @@ then
 	}
 fi
 
+if [[ -x =doas ]]
+then
+	doas ()
+	{
+		local -U path=($path /sbin /usr/sbin /usr/local/sbin)
+		command doas "$@"
+	}
+fi
+
 # PostgreSQL XDG redirects
 if [[ -x =psql ]]
 then
