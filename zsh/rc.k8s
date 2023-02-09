@@ -1,0 +1,15 @@
+
+if [[ -x =kubectl ]]
+then
+	funcdir="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/funcs"
+	mkdir -p "$funcdir"
+	if [[ ! -e "$funcdir/_kubectl" || "$funcdir/_kubectl" -ot =kubectl ]]
+	then
+		kubectl completion zsh > "$funcdir/_kubectl"
+	fi
+	unset funcdir
+
+	alias k='kubectl'
+fi
+
+# vim: set ft=zsh ts=4 sw=4:
