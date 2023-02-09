@@ -8,10 +8,6 @@ then
 	ln -sf "$SSH_AUTH_SOCK" "$sshlink"
 fi
 
-[[ -e $sshlink ]] && export SSH_AUTH_SOCK="$sshlink"
-
-unset sshlink
-
 # WSL2 to PuTTY agent
 if [[ $SSH_AUTH_SOCK == "" && $WSL_INTEROP != "" && -x =npiperelay.exe ]]
 then
@@ -40,6 +36,14 @@ then
 		fi
 	done
 fi
+
+# Only use "latest" link if we couldn't find another usable agent
+if [[ $SSH_AUTH_SOCK == "" && -e $sshlink ]]
+then
+	export SSH_AUTH_SOCK="$sshlink"
+fi
+
+unset sshlink
 
 true
 # vi: set ft=zsh ts=4 sw=4:
