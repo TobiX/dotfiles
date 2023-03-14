@@ -1,4 +1,20 @@
-# Stuff to detect screen and move some variables from outside to the inside
+# Stuff to detect tmux/screen and move some variables from outside to the inside
+
+# tmux already copies some variables when re-attaching, we only need
+# to ask nicely for them
+if [[ -x =tmux ]]
+then
+	if [[ -n $TMUX ]]
+	then
+		functions[precmd]="${functions[precmd]//tmux_magic_precmd}
+			tmux_magic_precmd"
+
+		tmux_magic_precmd () {
+			eval $(tmux show-environment -s)
+		}
+
+	fi
+fi
 
 if [[ -x =screen ]]
 then
