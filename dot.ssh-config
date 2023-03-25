@@ -38,6 +38,7 @@ Host *
 	HashKnownHosts no
 	CheckHostIP no
 	VisualHostKey yes
+	VerifyHostKeyDNS yes
 	ControlMaster auto
 	ControlPath ~/.cache/ssh-master-%C
 	ControlPersist 1
