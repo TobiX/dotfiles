@@ -10,6 +10,12 @@ then
 	unset funcdir
 
 	alias k='kubectl'
+
+	export KREW_ROOT="${XDG_DATA_HOME:-$HOME/.local/share}/krew"
+	if [ -d "$KREW_ROOT/bin" ]
+	then
+		path+="$KREW_ROOT/bin"
+	fi
 fi
 
 # vim: set ft=zsh ts=4 sw=4:
