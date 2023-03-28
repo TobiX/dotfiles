@@ -111,6 +111,13 @@ then
 	export BROWSER="powershell.exe /C start"
 fi
 
+# Windows Terminal is true-color capable, but doesn't announce it
+# See https://github.com/microsoft/terminal/issues/11057
+if [[ $WT_SESSION ]]
+then
+	export COLORTERM=truecolor
+fi
+
 if [ -e ~/doc/secret/envs ]
 then
 	. ~/doc/secret/envs
