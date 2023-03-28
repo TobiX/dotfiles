@@ -42,6 +42,6 @@ Host *
 	ControlMaster auto
 	ControlPath ~/.cache/ssh-master-%C
 	ControlPersist 1
-	UseRoaming no
+	SendEnv COLORTERM
 
 # vim: set ft=sshconfig:
