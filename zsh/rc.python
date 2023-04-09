@@ -3,6 +3,8 @@ for p in /usr/share/virtualenvwrapper /usr/bin
 do
 	if [[ -e $p/virtualenvwrapper_lazy.sh ]]
 	then
+		# Force virtualenvwrapper to use the system Python
+		export VIRTUALENVWRAPPER_PYTHON==python3
 		export WORKON_HOME="$HOME/.local/lib/venvs"
 		. $p/virtualenvwrapper_lazy.sh
 		break
