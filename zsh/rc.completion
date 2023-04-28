@@ -56,4 +56,12 @@ then
 	eval "$(_WORMHOLE_COMPLETE=zsh_source wormhole)"
 fi
 
+if [[ -x =aws_completer ]]
+then
+	autoload -U bashcompinit
+	bashcompinit
+
+	complete -C =aws_completer aws
+fi
+
 # vim: set ts=4 sw=4 ft=zsh:
