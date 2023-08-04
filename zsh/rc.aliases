@@ -11,6 +11,8 @@ alias dispssh='export DISPLAY=${${=SSH_CLIENT}[1]}:0'
 alias ffprobe='ffprobe -hide_banner'
 alias ffmpeg='ffmpeg -hide_banner'
 
+[[ -x =nmcli ]] && alias wifi-qr='nmcli device wifi show-password'
+
 # fancy ip
 alias ip='ip --color'
 alias ipb='ip --brief'
