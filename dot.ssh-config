@@ -5,22 +5,11 @@ Host kos-mos* may* kurumi*
 	ForwardX11 yes
 	Compression no
 
-Host weltarchiv* *.aachen.ccc.de *.ccc.ac
+Host *.aachen.ccc.de *.ccc.ac
 	User tobix
 
 Host *gnu.org
 	User TobiG
-
-Host *.sf.net
-	User tobig
-
-Host w8n.koeln.ccc.de
-	Port 2222
-
-Host ssp2*
-	Hostname ssp2.23.gs
-	Port 6451
-	User root
 
 Host armbuild
 	Hostname 127.0.0.1
