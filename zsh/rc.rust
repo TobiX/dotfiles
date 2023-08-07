@@ -3,10 +3,11 @@
 export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
 
 function {
+	mkdir -p "$HOME/.cache/cargo"
 	if [[ ! -d "$CARGO_HOME" ]]
 	then
 		autoload -Uz relpath
-		mkdir -p "$CARGO_HOME" "$HOME/.cache/cargo"
+		mkdir -p "$CARGO_HOME"
 		ln -s $(relpath "$CARGO_HOME" "$HOME/.local/bin") "$CARGO_HOME/bin"
 		ln -s $(relpath "$CARGO_HOME" "$HOME/.cache/cargo") "$CARGO_HOME/registry"
 	fi
