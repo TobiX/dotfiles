@@ -4,6 +4,8 @@
 # This makes sure to continue with the next file after one download fails
 --ignore-errors
 --add-metadata
+--embed-subs
+--sub-langs de,en,jp
 --cookies ~/.cache/ytdl-cookies.txt
 # Marking things as watched doesn't seem to work
 #--netrc --mark-watched
