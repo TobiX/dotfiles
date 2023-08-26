@@ -21,8 +21,11 @@ then
 	alias td='todo'          # For devtodo, two chars shorter :)
 	alias tdl='todo --link'  # Debian...
 
-	# Called on every directory change!
-	chpwd ()
+	# Run on directory changes
+	functions[chpwd]="${functions[chpwd]//chpwd_devtodo}
+		chpwd_devtodo"
+
+	chpwd_devtodo ()
 	{
 		[[ -t 0 && -r .todo ]] && devtodo "$TODO_OPTIONS[@]"
 	}
@@ -59,6 +62,20 @@ then
 	{
 		local -U path=($path /sbin /usr/sbin /usr/local/sbin)
 		command doas "$@"
+	}
+fi
+
+if [[ -x =git ]]
+then
+	functions[chpwd]="${functions[chpwd]//chpwd_gitblame}
+		chpwd_gitblame"
+
+	chpwd_gitblame ()
+	{
+		if [[ -d .git && -f .git-blame-ignore-revs ]]
+		then
+			git config blame.ignoreRevsFile .git-blame-ignore-revs
+		fi
 	}
 fi
 
