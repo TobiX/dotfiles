@@ -42,4 +42,6 @@ alias -g VP="| curl -F 'text=<-' http://vpaste.net/"
 # stow, stow, stow your boat... - this really should be the default...
 alias stow="$rootcmd stow -d /usr/local/stow"
 
+[[ -x =caddy ]] && alias serve="caddy file-server --browse --listen :8000"
+
 # vi: set ft=zsh ts=4 sw=4:
