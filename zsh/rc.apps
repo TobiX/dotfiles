@@ -79,6 +79,18 @@ then
 	}
 fi
 
+if [[ -x =podman ]]
+then
+	# Funky hack to deal with pam_tmpdir
+	podman ()
+	{
+		(
+			unset TMPDIR
+			exec =podman "$@"
+		)
+	}
+fi
+
 # PostgreSQL XDG redirects
 if [[ -x =psql ]]
 then
