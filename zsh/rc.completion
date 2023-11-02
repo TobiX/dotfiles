@@ -14,6 +14,9 @@ zstyle ':completion:*' cache-path "$zcache"
 zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)CVS' 
 zstyle ':completion:*:cd:*' ignored-patterns '(*/)#CVS'
 
+# More extensions for ZIP archives
+zstyle ':completion:*:*:unzip:*' file-patterns '(#i)*.(zip|xpi|[ejw]ar|cbz)(-.) *(-/):directories' '*:all-files'
+
 # Ignore completion function when completing commands
 zstyle ':completion:*:functions' ignored-patterns '_*'
 
