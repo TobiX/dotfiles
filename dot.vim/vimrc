@@ -16,12 +16,12 @@ endif
 " vim-plug autoinstall with validation, because I'm paranoid
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/8fdabfba0b5a1b0616977a32d9e04b4b98a6016a/plug.vim
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/ca0ae0a8b1bd6380caba2d8be43a2a19baf7dbe2/plug.vim
   if empty(glob('~/.vim/autoload/plug.vim'))
     silent !wget -O ~/.vim/autoload/plug.vim
-      \ https://raw.githubusercontent.com/junegunn/vim-plug/8fdabfba0b5a1b0616977a32d9e04b4b98a6016a/plug.vim
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/ca0ae0a8b1bd6380caba2d8be43a2a19baf7dbe2/plug.vim
   endif
-  if sha256(join(readfile(glob('~/.vim/autoload/plug.vim'), 'b'), "\n")) == 'e2dbd7c8d732ae797e5059c0dc1e964b94529a32d07d051d5d058727462a43fd'
+  if sha256(join(readfile(glob('~/.vim/autoload/plug.vim'), 'b'), "\n")) == 'b97c0baec81a9fa3d861fc6e75d89813ec2b040759dd6168fe65278f2c439ded'
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
   else
     call delete(glob('~/.vim/autoload/plug.vim'))
