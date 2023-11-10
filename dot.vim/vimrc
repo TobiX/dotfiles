@@ -38,6 +38,7 @@ Plug 'exvim/ex-matchit', { 'commit': 'f0ef9f72a5ef37fd69981a5246fd834039f65b90' 
 Plug 'Glench/Vim-Jinja2-Syntax', { 'commit': '2c17843b074b06a835f88587e1023ceff7e2c7d1' }
 Plug 'jamessan/vim-gnupg', { 'commit': '90b86c542c40fa8bcee1fbc6ae69650f0280c695' }
 Plug 'jneen/ragel.vim', { 'commit': '898a06e8e0e48b4d589949a29fb511090cdf3f45' }
+Plug 'lifepillar/vim-solarized8', { 'commit': 'bde9cab3d9e9368f0b62f94149ab51607fcb8b68' }
 Plug 'tpope/vim-fugitive', { 'commit': '49cc58573e746d02024110d9af99e95994ea4b72' }
 Plug 'vim-scripts/DirDiff.vim', { 'commit': '6c111f8b10c464afa45c6b62820bf3b50828c627' }
 Plug 'vim-scripts/info.vim', { 'commit': '520a2b33a035770504b37041f12d9017ee213d70' }
@@ -106,10 +107,13 @@ set hidden
 set winheight=5
 set statusline=%1*[%n]%*\ %<%f\ %(%2*(%H%M%R%Y)%*%)%=%-10(%3*[%3b,%2B]%*%)\ %-14.(%l,%c%V%)\ %P
 
-"colorscheme tobias1
-" in color scheme
+" color scheme
 set background=dark
-hi Normal guifg=white guibg=black
+let g:solarized_termtrans=1
+let g:solarized_extra_hi_groups=1
+colorscheme solarized8
+
+hi Normal guibg=black
 hi StatusLine   cterm=none ctermfg=white ctermbg=darkblue gui=bold guifg=white guibg=darkblue
 hi User1 ctermfg=red    ctermbg=darkblue guifg=red    guibg=darkblue
 hi User2 ctermfg=cyan   ctermbg=darkblue guifg=cyan   guibg=darkblue
