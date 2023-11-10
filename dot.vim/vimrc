@@ -13,22 +13,22 @@ if !has('win32')
   endif
 endif
 
+let plug_file = split(&rtp, ',')[0] . '/autoload/plug.vim'
+let plug_src = 'https://raw.githubusercontent.com/junegunn/vim-plug/ca0ae0a8b1bd6380caba2d8be43a2a19baf7dbe2/plug.vim'
 " vim-plug autoinstall with validation, because I'm paranoid
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/ca0ae0a8b1bd6380caba2d8be43a2a19baf7dbe2/plug.vim
-  if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !wget -O ~/.vim/autoload/plug.vim
-      \ https://raw.githubusercontent.com/junegunn/vim-plug/ca0ae0a8b1bd6380caba2d8be43a2a19baf7dbe2/plug.vim
+if empty(glob(plug_file))
+  call system('curl -fLo '.plug_file.' '.plug_src)
+  if empty(glob(plug_file))
+    call system('wget -O '.plug_file.' '.plug_src)
   endif
-  if sha256(join(readfile(glob('~/.vim/autoload/plug.vim'), 'b'), "\n")) == 'b97c0baec81a9fa3d861fc6e75d89813ec2b040759dd6168fe65278f2c439ded'
+  if sha256(join(readfile(plug_file, 'b'), "\n")) == 'b97c0baec81a9fa3d861fc6e75d89813ec2b040759dd6168fe65278f2c439ded'
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
   else
-    call delete(glob('~/.vim/autoload/plug.vim'))
+    call delete(plug_file)
   endif
 endif
 
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 Plug 'airblade/vim-gitgutter', { 'commit': '400a12081f188f3fb639f8f962456764f39c6ff1' }
 Plug 'arrufat/vala.vim', { 'commit': 'ce569e187bf8f9b506692ef08c10b584595f8e2d' }
 Plug 'cespare/vim-toml', { 'commit': '3c5face8e8944a217af45bc5bb708ff7dfcf1a54' }
