@@ -172,8 +172,8 @@ let g:DirDiffExcludes = ".svn,.*.swp"
 let g:DirDiffSort = 0
 let g:DirDiffDynamicDiffText = 0
 
-" Python
-let g:ale_python_flakehell_executable = "flakeheaven"
+" ALE
+let g:ale_virtualtext_prefix = '◆ '
 
 " Options for specific projects
 au BufNewFile,BufRead */dosage/*	set expandtab sw=4 sts=4
