@@ -20,14 +20,19 @@ then
 	eval "$(pyenv init -)"
 fi
 
-for p in register-python-argcomplete register-python-argcomplete3
-do
-	if whence -p $p &> /dev/null
-	then
-		register_argcomp=$p
-		break
-	fi
-done
+unset register_argcomp
+# if argcomplete 3.x global registration is loaded, skip specific config
+if ! whence _python-argcomplete &> /dev/null
+then
+	for p in register-python-argcomplete register-python-argcomplete3
+	do
+		if whence -p $p &> /dev/null
+		then
+			register_argcomp=$p
+			break
+		fi
+	done
+fi
 
 if [[ $register_argcomp && -x =pipx ]]
 then
@@ -38,6 +43,7 @@ then
 fi
 
 unset p register_argcomp
+
 
 if [[ -x =poetry ]]
 then
