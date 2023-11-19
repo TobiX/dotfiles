@@ -33,6 +33,7 @@ Plug 'airblade/vim-gitgutter', { 'commit': '400a12081f188f3fb639f8f962456764f39c
 Plug 'cespare/vim-toml', { 'commit': '3c5face8e8944a217af45bc5bb708ff7dfcf1a54' }
 Plug 'ciaranm/securemodelines', { 'commit': '9751f29699186a47743ff6c06e689f483058d77a' }
 Plug 'dense-analysis/ale', { 'commit': '50e237facda4b9c3761c3f3e9df185cfdf3d91e8' }
+Plug 'editorconfig/editorconfig-vim', { 'commit': '0d54ea863089fb13be423b4aed6cca35f3a5d778' }
 Plug 'exvim/ex-matchit', { 'commit': 'f0ef9f72a5ef37fd69981a5246fd834039f65b90' }
 Plug 'Glench/Vim-Jinja2-Syntax', { 'commit': '2c17843b074b06a835f88587e1023ceff7e2c7d1' }
 Plug 'jamessan/vim-gnupg', { 'commit': '90b86c542c40fa8bcee1fbc6ae69650f0280c695' }
