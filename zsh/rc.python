@@ -1,4 +1,6 @@
 
+export PYTHONSTARTUP="$DOTFILES_BASE/lib/repl_startup.py"
+
 for p in /usr/share/virtualenvwrapper /usr/bin
 do
 	if [[ -e $p/virtualenvwrapper_lazy.sh ]]
