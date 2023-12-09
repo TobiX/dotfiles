@@ -42,7 +42,7 @@ Plug 'shumphrey/fugitive-gitlab.vim', { 'commit': '55fed481c0309b3405dd3d72921d6
 Plug 'tpope/vim-fugitive', { 'commit': '46eaf8918b347906789df296143117774e827616' }
 Plug 'tpope/vim-rhubarb', { 'commit': 'ee69335de176d9325267b0fd2597a22901d927b1' }
 Plug 'vim-scripts/DirDiff.vim', { 'commit': '6c111f8b10c464afa45c6b62820bf3b50828c627' }
-Plug 'vim-scripts/info.vim', { 'commit': '520a2b33a035770504b37041f12d9017ee213d70' }
+Plug 'mMontu/info.vim', { 'commit': 'f7ab6d40a7cd3653f10b1ad7feb7520773a69b4c' }
 Plug 'vim-scripts/LargeFile', { 'commit': '3941a37b2b0288524300348a39521a46539bf9f6' }
 call plug#end()
 
