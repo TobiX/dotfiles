@@ -38,11 +38,12 @@ Plug 'exvim/ex-matchit', { 'commit': 'f0ef9f72a5ef37fd69981a5246fd834039f65b90' 
 Plug 'Glench/Vim-Jinja2-Syntax', { 'commit': '2c17843b074b06a835f88587e1023ceff7e2c7d1' }
 Plug 'jamessan/vim-gnupg', { 'commit': '90b86c542c40fa8bcee1fbc6ae69650f0280c695' }
 Plug 'lifepillar/vim-solarized8', { 'commit': 'bde9cab3d9e9368f0b62f94149ab51607fcb8b68' }
+Plug 'mMontu/info.vim', { 'commit': 'f7ab6d40a7cd3653f10b1ad7feb7520773a69b4c' }
+Plug 'powerman/vim-plugin-AnsiEsc', { 'commit': '690f820d20b6e3a79ba20499874eb7333aa4ca5c' }
 Plug 'shumphrey/fugitive-gitlab.vim', { 'commit': '55fed481c0309b3405dd3d72921d687bf36873a8' }
 Plug 'tpope/vim-fugitive', { 'commit': '46eaf8918b347906789df296143117774e827616' }
 Plug 'tpope/vim-rhubarb', { 'commit': 'ee69335de176d9325267b0fd2597a22901d927b1' }
 Plug 'vim-scripts/DirDiff.vim', { 'commit': '6c111f8b10c464afa45c6b62820bf3b50828c627' }
-Plug 'mMontu/info.vim', { 'commit': 'f7ab6d40a7cd3653f10b1ad7feb7520773a69b4c' }
 Plug 'vim-scripts/LargeFile', { 'commit': '3941a37b2b0288524300348a39521a46539bf9f6' }
 call plug#end()
 
