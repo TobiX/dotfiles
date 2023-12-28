@@ -1,0 +1,3 @@
+[mypy]
+cache_dir = ~/.cache/mypy
+sqlite_cache = True
