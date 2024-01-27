@@ -72,7 +72,8 @@ set autowrite
 set nostartofline
 set visualbell
 set whichwrap=b,s,h,l,<,>,[,]
-set colorcolumn=80
+set cursorcolumn
+set colorcolumn=+2
 
 " I want -w instead of -b
 set diffexpr=MyDiff()
