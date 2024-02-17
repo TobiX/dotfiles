@@ -13,6 +13,7 @@
 [column]
 	branch = auto
 [commit]
+	cleanup = scissors
 	gpgsign = true
 [core]
 	autocrlf = input
@@ -34,7 +35,9 @@
 [delta "interactive"]
 	keep-plus-minus-markers = false
 [diff]
+	algorithm = histogram
 	colorMoved = default
+	submodule = log
 	tool = kdiff3
 [difftool "idiff"]
 	cmd = diff -i $LOCAL $REMOTE
@@ -59,17 +62,21 @@
 [interactive]
 	diffFilter = ( delta --color-only --features=interactive || cat )
 [merge]
-	conflictstyle = diff3
+	conflictstyle = zdiff3
 [protocol]
 	version = 2
 [pull]
 	rebase = true
 [push]
+	autoSetupRemote = true
 	default = simple
 [rebase]
+	autoSquash = true
 	autoStash = true
 [rerere]
 	enabled = true
+[status]
+	submoduleSummary = true
 [transfer]
 	fsckObjects = true
 [url "https://"]
@@ -78,6 +85,8 @@
 	email = tobias-git@23.gs
 	name = Tobias Gruetzmacher
 	useConfigOnly = true
+[log]
+	date = iso
 
 [include]
 	path = ~/doc/secret/git.conf
