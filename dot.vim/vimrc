@@ -58,6 +58,10 @@ elseif has("gui_win32")
 	set guifont=Consolas
 endif
 
+if has("gui_running")
+  set lines=35 columns=140
+endif
+
 " overwrite default
 set nocompatible
 set backspace=start,indent,eol
