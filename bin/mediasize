@@ -1,0 +1,40 @@
+#!/usr/bin/python3
+
+import sys
+from pathlib import Path
+
+from pymediainfo import MediaInfo
+from rich.console import Console
+from rich.progress import track
+from rich.table import Column, Table
+
+table = Table(Column(header="Name", max_width=100), Column(header="Duration", justify="right"), "FR",
+    "Dimensions", Column(header="kBitrate/s", justify="right"), "Audio", box=None)
+
+for file in track(sys.argv[1:], description="Reading...", transient=True):
+    path = Path(file)
+    if not path.is_file():
+        continue
+    info = MediaInfo.parse(path)
+    g = info.general_tracks[0]
+    row = [g.complete_name, g.other_duration[0] if g.other_duration else ""]
+    if info.video_tracks:
+        v = info.video_tracks[0]
+        row.extend((
+            v.frame_rate,
+            f'{v.width}x{v.height}',
+        ))
+    else:
+        row.extend(('', ''))
+    kbits = g.overall_bit_rate / 1024
+    row.extend((
+        f'{kbits:.2f}',
+        ",".join(
+            t.other_language[-2] if t.other_language else "unk"
+            for t in info.audio_tracks)
+        )
+    )
+    table.add_row(*row)
+
+console = Console()
+console.print(table)
