@@ -24,11 +24,16 @@ for file in track(sys.argv[1:], description="Reading...", transient=True):
             v.frame_rate,
             f'{v.width}x{v.height}',
         ))
+    elif info.image_tracks:
+        i = info.image_tracks[0]
+        row.extend((
+            '',
+            f'{i.width}x{i.height}',
+        ))
     else:
         row.extend(('', ''))
-    kbits = g.overall_bit_rate / 1024
     row.extend((
-        f'{kbits:.2f}',
+        f'{g.overall_bit_rate / 1024:.2f}' if g.overall_bit_rate else '',
         ",".join(
             t.other_language[-2] if t.other_language else "unk"
             for t in info.audio_tracks)
