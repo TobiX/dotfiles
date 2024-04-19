@@ -1,3 +1,4 @@
+# coding: utf-8
 #--console-title
 --output "%(title)s-%(upload_date)s-%(fps)sfps-%(id)s.%(ext)s"
 --restrict-filenames
@@ -5,6 +6,7 @@
 --ignore-errors
 --add-metadata
 --embed-subs
+--embed-thumbnail
 --sub-langs de,en,jp
 --cookies ~/.cache/ytdl-cookies.txt
 # Marking things as watched doesn't seem to work
