@@ -18,6 +18,10 @@ Host armbuild
 Host appletv.local
 	KexAlgorithms +diffie-hellman-group-exchange-sha1
 
+# For SSH through https://github.com/erebe/wstunnel
+Host wss://*
+	ProxyCommand wstunnel client -L stdio://localhost:%p %h
+
 Host *
 	Compression yes
 	ServerAliveInterval 30
