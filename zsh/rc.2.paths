@@ -9,6 +9,7 @@ typeset -U path cdpath fpath manpath infopath
 # add some handy path constructs
 for d in \
 	~/.local/bin \
+	${XDG_DATA_HOME:-$HOME/.local/share}/cargo/bin \
 	~/doc/dev/scripts \
 	$DOTFILES_BASE/bin \
 	/usr/games \

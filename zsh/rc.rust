@@ -8,7 +8,6 @@ function {
 	then
 		autoload -Uz relpath
 		mkdir -p "$CARGO_HOME"
-		ln -s $(relpath "$CARGO_HOME" "$HOME/.local/bin") "$CARGO_HOME/bin"
 		ln -s $(relpath "$CARGO_HOME" "$HOME/.cache/cargo") "$CARGO_HOME/registry"
 	fi
 }
