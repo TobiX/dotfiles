@@ -1,4 +1,4 @@
-# Colors and aliases for ls/exa
+# Colors and aliases for ls/eza
 
 case `ls --version 2>/dev/null` in
 	(*Free Software Foundation*)
@@ -14,15 +14,16 @@ case `ls --version 2>/dev/null` in
 		;;
 esac
 
-if [[ -x =exa ]]
+# exa is unmaintained, use maintained fork eza
+if [[ -x =eza ]]
 then
-	alias ls='exa'
-	alias ll='exa -la'
-	alias la='exa -a'
-	alias l='exa -l'
+	alias ls='eza'
+	alias ll='eza -la'
+	alias la='eza -a'
+	alias l='eza -l'
 	if [[ ! -x =tree ]]
 	then
-		alias tree='exa --tree'
+		alias tree='eza --tree'
 	fi
 else
 	alias ll='ls -la'
