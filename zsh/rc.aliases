@@ -1,12 +1,4 @@
-# Many handy aliases
-
-# for dvorak
-alias aoeu='setxkbmap de nodeadkeys || loadkeys de-latin1-nodeadkeys'
-alias asdf='setxkbmap dvorak || loadkeys dvorak'
-
 # Variables and aliases for user programs
-# set DISPLAY to first screen on ssh connected host
-alias dispssh='export DISPLAY=${${=SSH_CLIENT}[1]}:0'
 
 alias ffprobe='ffprobe -hide_banner'
 alias ffmpeg='ffmpeg -hide_banner'
