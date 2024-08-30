@@ -1,0 +1,12 @@
+# history control
+
+HISTFILE=~/.cache/zsh_history.$UID
+SAVEHIST=200000
+HISTSIZE=200000
+
+if [[ -x =atuin ]]
+then
+	eval "$(atuin init zsh)"
+fi
+
+# vi: set ts=4 sw=4 ft=zsh:

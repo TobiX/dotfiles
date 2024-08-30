@@ -5,11 +5,6 @@ LOGCHECK=10
 WATCH=notme
 WATCHFMT="%D %T: User %B%n%b %a at %l%(M: from %M:)"
 
-# history control
-HISTFILE=~/.cache/zsh_history.$UID
-SAVEHIST=200000
-HISTSIZE=200000
-
 # times
 REPORTTIME=2
 REPORTMEMORY=1024
