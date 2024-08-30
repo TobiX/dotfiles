@@ -56,7 +56,7 @@ unset zcache
 # wormhole completion
 if [[ -x =wormhole ]]
 then
-	eval "$(_WORMHOLE_COMPLETE=zsh_source wormhole)"
+	eval "$(_WORMHOLE_COMPLETE=zsh_source wormhole 2> /dev/null)"
 fi
 
 if [[ -x =aws_completer ]]
