@@ -2,12 +2,7 @@
 if [[ -x =kubectl ]]
 then
 	funcdir="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/funcs"
-	mkdir -p "$funcdir"
-	if [[ ! -e "$funcdir/_kubectl" || "$funcdir/_kubectl" -ot =kubectl ]]
-	then
-		kubectl completion zsh > "$funcdir/_kubectl"
-	fi
-	unset funcdir
+	_cache-completion =kubectl "kubectl completion zsh"
 
 	alias k='kubectl'
 

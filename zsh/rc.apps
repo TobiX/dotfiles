@@ -91,6 +91,14 @@ then
 	}
 fi
 
+# mise-en-place
+if [[ -x =mise ]]
+then
+	eval "$(mise activate zsh)"
+	# TAB completion needs the "usage" tool (install with "mise use -g usage")
+	[[ -x =usage ]] && _cache-completion =mise "mise completion zsh"
+fi
+
 # PostgreSQL XDG redirects
 if [[ -x =psql ]]
 then

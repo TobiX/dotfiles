@@ -1,0 +1,14 @@
+# Generate a completion function from the output of a specific command, but
+# only if the binary is newer then the completion script
+
+local funcdir="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/funcs"
+local bin="$1"
+local cmd="$2"
+local target="$funcdir/_$bin:t"
+
+if [[ ! -e "$target" || "$target" -ot "$bin" ]]
+then
+	mkdir -p "$funcdir"
+	$=cmd > "$target"
+fi
+
