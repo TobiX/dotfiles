@@ -551,23 +551,12 @@ prompt_jde_ps1 () {
 }
 
 #############################################################################}}}
-### WINCH {{{
-################################################################################
-#TODO: this is not getting called
-prompt_jde_winch () {
-	setopt localoptions noksharrays
-
-	# Delete ourself from TRAPWINCH if not using our precmd insert.
-	[[ $functions[precmd] = *prompt_jde_precmd* ]] && prompt_jde_ps1 ||
-	   functions[TRAPWINCH]="${functions[TRAPWINCH]//prompt_jde_winch}"
-}
-
-#############################################################################}}}
 ### SETUP {{{
 ################################################################################
 prompt_jde_setup () {
 	# zsh options we require: prompt_*
 	prompt_opts=( cr subst percent )
+	autoload -Uz add-zsh-hook
 
 	setopt localoptions noksharrays
 	typeset -g PROMPT_JDE_ALTCHAR PROMPT_JDE_MAILCOUNT
@@ -577,9 +566,6 @@ prompt_jde_setup () {
 	# A few extra niceties ...
 	repeat 1 case "$1:l" in
 	  (off|disable)
-		functions[precmd]="${functions[precmd]//prompt_jde_precmd}"
-		functions[preexec]="${functions[preexec]//prompt_jde_preexec}"
-		functions[TRAPWINCH]="${functions[TRAPWINCH]//prompt_jde_winch}"
 		[[ $prompt_theme[1] = jde ]] && PS1=${${(f)PS1}[-1]}
 		return 1
 		;;
@@ -608,17 +594,9 @@ prompt_jde_setup () {
 
 	prompt_jde_ps1
 
-	# Paste our special commands into precmd and TRAPWINCH
-	functions[precmd]="${functions[precmd]//prompt_*_precmd}
-	    prompt_jde_precmd"
-
-	functions[preexec]="${functions[preexec]//prompt_*_preexec \"\$1\"}
-	    prompt_jde_preexec \"\$1\""
-
-	functions[TRAPWINCH]="${functions[TRAPWINCH]//prompt_jde_winch}
-	    prompt_jde_winch"
-
-	return 0
+	# Wire up hooks
+	add-zsh-hook precmd prompt_jde_precmd
+	add-zsh-hook preexec prompt_jde_preexec
 }
 
 # }}}

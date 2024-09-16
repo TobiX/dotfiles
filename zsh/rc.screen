@@ -6,10 +6,10 @@ if [[ -x =tmux ]]
 then
 	if [[ -n $TMUX ]]
 	then
-		functions[precmd]="${functions[precmd]//tmux_magic_precmd}
-			tmux_magic_precmd"
+		autoload -Uz add-zsh-hook
+		add-zsh-hook precmd _precmd_tmux_magic
 
-		tmux_magic_precmd () {
+		_precmd_tmux_magic () {
 			eval $(tmux show-environment -s)
 		}
 
@@ -23,10 +23,10 @@ then
 	if [[ -n $STY ]]
 	then
 		# Now for the bigger magic
-		functions[precmd]="${functions[precmd]//screen_magic_precmd}
-			screen_magic_precmd"
+		autoload -Uz add-zsh-hook
+		add-zsh-hook precmd _precmd_screen_magic
 
-		screen_magic_precmd () {
+		_precmd_screen_magic () {
 			local parent=$(_get_screen_parent)
 			if [[ $parent != $screen_magic_lastparent && -r /proc/$parent/environ ]]
 			then

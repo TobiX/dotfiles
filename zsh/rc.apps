@@ -22,10 +22,10 @@ then
 	alias tdl='todo --link'  # Debian...
 
 	# Run on directory changes
-	functions[chpwd]="${functions[chpwd]//chpwd_devtodo}
-		chpwd_devtodo"
+	autoload -Uz add-zsh-hook
+	add-zsh-hook chpwd _chpwd_devtodo
 
-	chpwd_devtodo ()
+	_chpwd_devtodo ()
 	{
 		[[ -t 0 && -r .todo ]] && devtodo "$TODO_OPTIONS[@]"
 	}
@@ -61,16 +61,17 @@ then
 	doas ()
 	{
 		local -U path=($path /sbin /usr/sbin /usr/local/sbin)
+		local WAYLAND_DISPLAY="$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY"
 		command doas "$@"
 	}
 fi
 
 if [[ -x =git ]]
 then
-	functions[chpwd]="${functions[chpwd]//chpwd_gitblame}
-		chpwd_gitblame"
+	autoload -Uz add-zsh-hook
+	add-zsh-hook chpwd _chpwd_gitblame
 
-	chpwd_gitblame ()
+	_chpwd_gitblame ()
 	{
 		if [[ -d .git && -f .git-blame-ignore-revs ]]
 		then

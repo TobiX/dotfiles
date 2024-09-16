@@ -10,14 +10,16 @@ zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
 zstyle ':vcs_info:*' enable git cvs svn darcs mtn hg bzr
 if vcs_info 2> /dev/null
 then
-	functions[precmd]="${functions[precmd]//vcs_info}
-	vcs_info"
+	autoload -Uz add-zsh-hook
+	add-zsh-hook precmd vcs_info
 fi
 
 # screen info
 case "$TERM" in
 	screen*)
-		preexec ()
+		autoload -Uz add-zsh-hook
+		add-zsh-hook preexec _preexec_screen_title
+		_preexec_screen_title ()
 		{
 			local CMD=${1[(wr)^(*=*|sudo|-*)]}
 			CMD=${CMD##*/}
