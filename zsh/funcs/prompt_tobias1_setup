@@ -70,26 +70,6 @@ prompt_tobias1_setup () {
 	PS2="%F{$pc[cont]}%_%F{$pc[contchar]}>%f "
 
 	SPROMPT="zsh:%B%F{$pc[error]} "%R" -> "%r" [ynae]?%f%b "
-
-	# fixup older zsh versions
-	autoload -Uz is-at-least
-	if ! is-at-least 4.3.9
-	then
-		autoload -Uz colors zsh/terminfo
-		if [[ "$terminfo[colors]" -ge 8 ]]
-		then
-			colors
-		fi
-
-		for elm in PS1 RPS1 PS2 SPROMPT
-		do
-			# I would like to replace %F{somecolor} with %{$fg[somecolor]%},
-			# but that is to complicated, so make a very simple, color-less
-			# prompt...
-			eval "$elm=\${(S)$elm//\\%F{*}/}"
-			eval "$elm=\${$elm//\\%B/}"
-		done
-	fi
 }
 
 prompt_tobias1_setup "$@"
