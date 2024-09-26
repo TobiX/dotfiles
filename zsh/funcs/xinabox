@@ -3,10 +3,14 @@ _getfreedisplay
 local display=$?
 if [[ $display != 255 ]]
 then
-	Xephyr :$display -screen 1024x768 &
+	if [[ $WAYLAND_DISPLAY ]]
+	then
+		Xwayland :$display -geometry 1024x768 -decorate &
+	else
+		Xephyr :$display -screen 1024x768 &
+	fi
 	sleep 1
-	DISPLAY=:$display openbox &
-#	xkbcomp $DISPLAY :$display
+	WAYLAND_DISPLAY= DISPLAY=:$display openbox &
 fi
 
 # vi: set ft=zsh ts=4 sw=4:
