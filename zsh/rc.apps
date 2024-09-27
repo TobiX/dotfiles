@@ -113,6 +113,8 @@ fi
 [[ -x =vncserver ]] && alias vnc-run='vncserver -geometry 1200x600 -depth 15 -localhost'
 [[ -x =xvncviewer ]] && alias vnc-view='xvncviewer -passwd ~/.vnc/passwd :1'
 
+[[ -x =wormhole-william ]] && _cache-completion =wormhole-william "wormhole-william shell-completion zsh"
+
 # httrack
 if [[ -e /usr/lib/httrack/htsserver ]]
 then
