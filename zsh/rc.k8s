@@ -1,7 +1,6 @@
 
 if [[ -x =kubectl ]]
 then
-	funcdir="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/funcs"
 	_cache-completion =kubectl "kubectl completion zsh"
 
 	alias k='kubectl'
