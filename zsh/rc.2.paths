@@ -22,10 +22,14 @@ done
 
 for d in \
 	$DOTFILES_BASE/zsh/funcs \
+	~/doc/dev/zfuncs \
 	"${XDG_CACHE_HOME:-$HOME/.cache}/zsh/funcs"
 do
-	[[ -d $d ]] && fpath=($d $fpath)
-	autoload -Uz $d/*(.:t)
+	if [[ -d $d ]]
+	then
+		fpath=($d $fpath)
+		autoload -Uz $d/*(.:t)
+	fi
 done
 
 if [[ -d ~/src ]]
