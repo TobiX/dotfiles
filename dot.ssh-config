@@ -1,6 +1,6 @@
 Include ~/doc/secret/ssh_config
 
-Host kos-mos* may* kurumi*
+Host sumomo* kurumi*
 	Port 6451
 	ForwardX11 yes
 	Compression no
