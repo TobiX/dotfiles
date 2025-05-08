@@ -13,15 +13,6 @@ do
 	fi
 done
 
-unset p
-
-if [[ -e ~/.local/lib/pyenv ]]
-then
-	export PYENV_ROOT="$HOME/.local/lib/pyenv"
-	path+="$PYENV_ROOT/bin"
-	eval "$(pyenv init -)"
-fi
-
 unset register_argcomp
 # if argcomplete 3.x global registration is loaded, skip specific config
 if ! whence _python-argcomplete &> /dev/null
