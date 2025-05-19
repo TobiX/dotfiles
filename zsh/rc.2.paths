@@ -24,7 +24,8 @@ done
 for d in \
 	$DOTFILES_BASE/zsh/funcs \
 	~/doc/dev/zfuncs \
-	"${XDG_CACHE_HOME:-$HOME/.cache}/zsh/funcs"
+	"${XDG_CACHE_HOME:-$HOME/.cache}/zsh/funcs" \
+	/usr/lib/python3/dist-packages/argcomplete/bash_completion.d
 do
 	if [[ -d $d ]]
 	then
