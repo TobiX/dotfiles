@@ -17,3 +17,6 @@ noblacklist ${RUNUSER}/app
 whitelist ${RUNUSER}/app/org.keepassxc.KeePassXC
 # More convinient, but less secure
 #ignore include whitelist-runuser-common.inc
+
+# Stop firefox sandbox "error"
+ignore apparmor
