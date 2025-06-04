@@ -1,6 +1,9 @@
 # vim
 .*.swp
 
+# Kate
+.*.kate-swp
+
 # IntelliJ
 .idea/
 *.iml
