@@ -8,15 +8,18 @@ then
 	ln -sf "$SSH_AUTH_SOCK" "$sshlink"
 fi
 
-# WSL2 to PuTTY agent
+# WSL2 to PuTTY agent or Windows-OpenSSH/1Password
 if [[ $SSH_AUTH_SOCK == "" && $WSL_INTEROP != "" && -x =npiperelay.exe ]]
 then
 	export SSH_AUTH_SOCK="$HOME/.cache/wsl2-ssh-agent"
 	if ! ss -a 2>&1 | grep -q "$SSH_AUTH_SOCK"
 	then
 		rm -f "$SSH_AUTH_SOCK"
-		pa_sock="$(powershell.exe 'Write-Host (Get-ChildItem \\.\pipe\ | Where-Object { $_.FullName -like "*pageant*" }).Name')"
-		(setsid nohup socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"npiperelay.exe -ei //./pipe/$pa_sock",nofork >/dev/null 2>&1 &)
+		pa_sock="$(powershell.exe 'Write-Host (Get-ChildItem \\.\pipe\ | Where-Object { $_.Name -like "*pageant*" -or $_.Name -like "openssh-*" }).Name')"
+		if [[ $pa_sock != "" ]]
+		then
+			(setsid nohup socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"npiperelay.exe -ei //./pipe/$pa_sock",nofork >/dev/null 2>&1 &)
+		fi
 		unset pa_sock
 	fi
 fi
