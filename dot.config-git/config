@@ -43,6 +43,8 @@
 	cmd = diff -i $LOCAL $REMOTE
 [fetch]
 	prune = true
+[fetch "fsck"]
+	skipList = ~/.config/git/skiplist
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	process = git-lfs filter-process
