@@ -36,9 +36,8 @@ done
 
 if [[ -d ~/src ]]
 then
-	mkdir -p "$HOME/src/go/bin"
 	export GOPATH=$HOME/src/go
-	path+=$GOPATH/bin
+	[[ -d $GOPATH/bin ]] && path+=$GOPATH/bin
 fi
 
 export VITASDK=$HOME/src/vitasdk
