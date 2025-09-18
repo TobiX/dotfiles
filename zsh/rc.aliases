@@ -34,6 +34,7 @@ alias -g VP="| curl -F 'text=<-' http://vpaste.net/"
 
 [[ -x =caddy ]] && alias serve="caddy file-server --browse --listen :8000"
 [[ -d ~/.var/app/com.github.Matoking.protontricks ]] && alias protontricks='flatpak run com.github.Matoking.protontricks'
+[[ -x =duf ]] && alias df='duf --hide-fs tmpfs,devtmpfs'
 
 # this really should be the default...
 alias stow="$rootcmd stow -d /usr/local/stow"
