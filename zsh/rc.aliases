@@ -5,6 +5,7 @@ alias ffmpeg='ffmpeg -hide_banner'
 alias make='make -j$(nproc)'
 
 [[ -x =nmcli ]] && alias wifi-qr='nmcli device wifi show-password'
+[[ -x '/mnt/c/Program Files/Notepad++/notepad++.exe' ]] && alias npp='/mnt/c/Program\ Files/Notepad++/notepad++.exe'
 
 # fancy ip
 alias ip='ip --color'
