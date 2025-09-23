@@ -14,14 +14,14 @@ if !has('win32')
 endif
 
 let plug_file = split(&rtp, ',')[0] . '/autoload/plug.vim'
-let plug_src = 'https://raw.githubusercontent.com/junegunn/vim-plug/ca0ae0a8b1bd6380caba2d8be43a2a19baf7dbe2/plug.vim'
+let plug_src = 'https://raw.githubusercontent.com/junegunn/vim-plug/904dac1530cfec0880cd44e4f7f206eb2e9e3247/plug.vim'
 " vim-plug autoinstall with validation, because I'm paranoid
 if empty(glob(plug_file))
   call system('curl -fLo '.plug_file.' '.plug_src)
   if empty(glob(plug_file))
     call system('wget -O '.plug_file.' '.plug_src)
   endif
-  if sha256(join(readfile(plug_file, 'b'), "\n")) == 'b97c0baec81a9fa3d861fc6e75d89813ec2b040759dd6168fe65278f2c439ded'
+  if sha256(join(readfile(plug_file, 'b'), "\n")) == 'c2d8998469a049a51225a71128a12917b379822d16b639493e29ea02d8787306'
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
   else
     call delete(plug_file)
@@ -29,20 +29,20 @@ if empty(glob(plug_file))
 endif
 
 call plug#begin()
-Plug 'airblade/vim-gitgutter', { 'commit': '400a12081f188f3fb639f8f962456764f39c6ff1' }
-Plug 'cespare/vim-toml', { 'commit': '3c5face8e8944a217af45bc5bb708ff7dfcf1a54' }
+Plug 'airblade/vim-gitgutter', { 'commit': '488c0555e47e2aabe273c635f7dd233e985311a6' }
+Plug 'cespare/vim-toml', { 'commit': '1b63257680eeb65677eb1ca5077809a982756d58' }
 Plug 'ciaranm/securemodelines', { 'commit': '9751f29699186a47743ff6c06e689f483058d77a' }
-Plug 'dense-analysis/ale', { 'commit': '50e237facda4b9c3761c3f3e9df185cfdf3d91e8' }
-Plug 'editorconfig/editorconfig-vim', { 'commit': '0d54ea863089fb13be423b4aed6cca35f3a5d778' }
+Plug 'dense-analysis/ale', { 'commit': '4217461c4859c4fac31ce3d2e22574218f244cf5' }
+Plug 'editorconfig/editorconfig-vim', { 'commit': '6a58b7c11f79c0e1d0f20533b3f42f2a11490cf8' }
 Plug 'exvim/ex-matchit', { 'commit': 'f0ef9f72a5ef37fd69981a5246fd834039f65b90' }
 Plug 'Glench/Vim-Jinja2-Syntax', { 'commit': '2c17843b074b06a835f88587e1023ceff7e2c7d1' }
-Plug 'jamessan/vim-gnupg', { 'commit': '90b86c542c40fa8bcee1fbc6ae69650f0280c695' }
-Plug 'lifepillar/vim-solarized8', { 'commit': 'bde9cab3d9e9368f0b62f94149ab51607fcb8b68' }
+Plug 'jamessan/vim-gnupg', { 'commit': 'f9b608f29003dfde6450931dc0f495a912973a88' }
+Plug 'lifepillar/vim-solarized8', { 'commit': '2f31fc2239c965d7dd9754ba8160582c99211e12' }
 Plug 'mMontu/info.vim', { 'commit': 'f7ab6d40a7cd3653f10b1ad7feb7520773a69b4c' }
 Plug 'powerman/vim-plugin-AnsiEsc', { 'commit': '690f820d20b6e3a79ba20499874eb7333aa4ca5c' }
-Plug 'shumphrey/fugitive-gitlab.vim', { 'commit': '55fed481c0309b3405dd3d72921d687bf36873a8' }
-Plug 'tpope/vim-fugitive', { 'commit': '46eaf8918b347906789df296143117774e827616' }
-Plug 'tpope/vim-rhubarb', { 'commit': 'ee69335de176d9325267b0fd2597a22901d927b1' }
+Plug 'shumphrey/fugitive-gitlab.vim', { 'commit': '3584cf7e607ba7822f991d407a8d780e05aae287' }
+Plug 'tpope/vim-fugitive', { 'commit': '61b51c09b7c9ce04e821f6cf76ea4f6f903e3cf4' }
+Plug 'tpope/vim-rhubarb', { 'commit': '5496d7c94581c4c9ad7430357449bb57fc59f501' }
 Plug 'vim-scripts/DirDiff.vim', { 'commit': '6c111f8b10c464afa45c6b62820bf3b50828c627' }
 Plug 'vim-scripts/LargeFile', { 'commit': '3941a37b2b0288524300348a39521a46539bf9f6' }
 call plug#end()
