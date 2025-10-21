@@ -5,9 +5,9 @@ if [[ $display != 255 ]]
 then
 	if [[ $WAYLAND_DISPLAY ]]
 	then
-		Xwayland :$display -geometry 1024x768 -decorate &
+		Xwayland :$display -geometry 1024x768 -decorate -listen tcp &
 	else
-		Xephyr :$display -screen 1024x768 &
+		Xephyr :$display -screen 1024x768 -listen tcp &
 	fi
 	sleep 1
 	WAYLAND_DISPLAY= DISPLAY=:$display openbox &
