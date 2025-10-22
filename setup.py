@@ -13,6 +13,8 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 home = os.path.realpath(os.path.expanduser('~'))
 
 exit = 0
+# Be strict with newly created directories
+os.umask(0o077)
 
 for f in glob('dot.*'):
     dst_home = f[3:].replace("--", "\ufffd").replace("-", "/").replace("\ufffd", "-")
