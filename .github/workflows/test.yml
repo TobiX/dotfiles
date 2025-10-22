@@ -1,0 +1,46 @@
+---
+name: Test
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test-legacy:
+    runs-on: ubuntu-latest
+    container: docker.io/debian/eol:bullseye  # Last Debian with Python 2.7
+    steps:
+      - name: Install dependencies
+        run: |
+          apt-get update -y
+          apt-get install -y --no-install-recommends git ca-certificates python
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Prepare user
+        run: useradd -m user
+      - name: Clone repo as user
+        run: su - user -c "git clone '$GITHUB_WORKSPACE' dotfiles"
+      - name: Test setup script
+        run: su - user -c "python dotfiles/setup.py"
+  test-modern:
+    runs-on: ubuntu-latest
+    container: docker.io/debian:stable
+    steps:
+      - name: Install dependencies
+        run: |
+          apt-get update -y
+          apt-get install -y --no-install-recommends git ca-certificates python3
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Prepare user
+        run: useradd -m user
+      - name: Clone repo as user
+        run: |
+          su - user -c "git config --global --add safe.directory '$GITHUB_WORKSPACE/.git'"
+          su - user -c "git clone '$GITHUB_WORKSPACE' dotfiles"
+      - name: Test setup script
+        run: su - user -c "dotfiles/setup.py"
+...
