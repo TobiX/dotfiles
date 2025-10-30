@@ -32,11 +32,11 @@ cd dotfiles
 
 ## Optional dependencies
 
-- Install [exa] for fancier `ls`
+- Install [eza] for fancier `ls`
 - Install [delta] (`cargo install git-delta`)  for fancier `git diffs`
 - Remember that hyperlinks need to be enabled in Konsole
 
-[exa]: https://github.com/ogham/exa
+[eza]: https://github.com/eza-community/eza
 [delta]: https://github.com/dandavison/delta
 
 # Credits
