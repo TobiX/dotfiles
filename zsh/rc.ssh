@@ -1,12 +1,18 @@
 # SSH magic
 
-# Link to existing SSH agent
-sshlink="$HOME/.cache/newest-ssh-agent"
-
-if [[ -o login && $SSH_AUTH_SOCK != "" ]]
+# Use 1Password if it is running
+op_sock=~/.1password/agent.sock
+if [[ ( $SSH_AUTH_SOCK == "" || $SSH_AUTH_SOCK == $XDG_RUNTIME_DIR/ssh-agent.socket ) && -r $op_sock ]]
 then
-	ln -sf "$SSH_AUTH_SOCK" "$sshlink"
+    if [[ $(ss -lxH src $op_sock) != "" ]]
+    then
+		SSH_AUTH_SOCK=$op_sock
+	else
+		# Clean up if 1Password isn't running
+		rm $op_sock
+    fi
 fi
+unset op_sock
 
 # WSL2 to PuTTY agent or Windows-OpenSSH/1Password
 if [[ $SSH_AUTH_SOCK == "" && $WSL_INTEROP != "" && -x =npiperelay.exe ]]
