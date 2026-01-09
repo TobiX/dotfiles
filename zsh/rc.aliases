@@ -1,8 +1,8 @@
 # Variables and aliases for user programs
 
-alias ffprobe='ffprobe -hide_banner'
-alias ffmpeg='ffmpeg -hide_banner'
-alias make='make -j$(nproc)'
+[[ -x =ffprobe ]] && alias ffprobe='ffprobe -hide_banner'
+[[ -x =ffmpeg  ]] && alias ffmpeg='ffmpeg -hide_banner'
+[[ -x =make ]] && alias make='make -j$(nproc)'
 
 [[ -x =nmcli ]] && alias wifi-qr='nmcli device wifi show-password'
 [[ -x '/mnt/c/Program Files/Notepad++/notepad++.exe' ]] && alias npp='/mnt/c/Program\ Files/Notepad++/notepad++.exe'
@@ -39,6 +39,6 @@ alias -g VP="| curl -F 'text=<-' http://vpaste.net/"
 [[ -x =cyme ]] && alias lsusb='cyme --lsusb'
 
 # this really should be the default...
-alias stow="$rootcmd stow -d /usr/local/stow"
+[[ -x =stow ]] && alias stow="$rootcmd stow -d /usr/local/stow"
 
 # vi: set ft=zsh ts=4 sw=4:
