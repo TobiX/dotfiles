@@ -39,3 +39,6 @@ done
 unset script rootcmd
 
 # vi: set ts=4 sw=4 ft=zsh:
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /home/tgruetzm/.local/bin/vault vault

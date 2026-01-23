@@ -8,11 +8,14 @@
 [[ -x '/mnt/c/Program Files/Notepad++/notepad++.exe' ]] && alias npp='/mnt/c/Program\ Files/Notepad++/notepad++.exe'
 
 # fancy ip
-alias ip='ip --color'
-alias ipb='ip --brief'
+if [[ -x =ip ]]
+then
+	alias ip='ip --color'
+	alias ipb='ip --brief'
+fi
 
 # fancy lsblk
-alias lsblk='lsblk -o "NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL"'
+[[ -x =lsblk ]] && alias lsblk='lsblk -o "NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL"'
 
 # support for ancient grep versions...
 case `grep --version 2>/dev/null` in
