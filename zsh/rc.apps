@@ -114,6 +114,7 @@ fi
 [[ -x =xvncviewer ]] && alias vnc-view='xvncviewer -passwd ~/.vnc/passwd :1'
 
 [[ -x =wormhole-william ]] && _cache-completion =wormhole-william "wormhole-william shell-completion zsh"
+[[ -x =uv ]] && _cache-completion =uv "uv --generate-shell-completion zsh"
 
 # httrack
 if [[ -e /usr/lib/httrack/htsserver ]]
