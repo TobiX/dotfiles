@@ -63,6 +63,8 @@ prompt_tobias1_setup () {
 	PS1+="%F{$pc[time]}%T "
 	PS1+="%(!.%F{$pc[rootchar]}.%F{$pc[userchar]})$ %f%b"
 
+	# Workaround for https://www.zsh.org/mla/workers/2021/msg01822.html
+	RPROMPT=foo
 	RPS1=" %B%F{$pc[path]}%~"
 	[[ -o prompt_subst ]] && RPS1+='${vcs_info_msg_0_}'
 	RPS1+="%f%(?.. [%?])%b"
