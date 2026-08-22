@@ -7,7 +7,7 @@ WATCHFMT="%D %T: User %B%n%b %a at %l%(M: from %M:)"
 
 # times
 REPORTTIME=2
-REPORTMEMORY=1024
+REPORTMEMORY=$((1024 * 40))
 TIMEFMT="$fg_bold[grey]Took: %U user, %S system, %P cpu, %*E total, max RSS %MkB$reset_color"
 
 # never correct to rm or _*
