@@ -79,6 +79,10 @@
 	enabled = true
 [status]
 	submoduleSummary = true
+[tig]
+	truncation-delimiter = utf-8
+	main-view-date = custom,format=\"%Y-%m-%d %H:%M\",local=true
+	main-view-author = maxwidth=25
 [transfer]
 	fsckObjects = true
 [url "https://"]
