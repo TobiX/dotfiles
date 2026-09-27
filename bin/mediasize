@@ -8,8 +8,13 @@ from rich.console import Console
 from rich.progress import track
 from rich.table import Column, Table
 
-table = Table(Column(header="Name", max_width=100), Column(header="Duration", justify="right"), "FR",
-    "Dimensions", Column(header="kBitrate/s", justify="right"), "Audio", box=None)
+table = Table(
+    Column(header="Name", max_width=120, no_wrap=True),
+    Column(header="Duration", justify="right"),
+    "FR",
+    "Dimensions",
+    Column(header="kBitrate/s", justify="right"),
+    "Audio", box=None)
 
 for file in track(sys.argv[1:], description="Reading...", transient=True):
     path = Path(file)
