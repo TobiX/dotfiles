@@ -8,8 +8,8 @@
 --embed-thumbnail
 --sub-langs de,en,jp
 --cookies ~/.cache/ytdl-cookies.txt
-# Prefer webm/mkv when merging (mp4 metadata is a mess)
---merge-output-format webm/mkv
+# Prefer mkv when merging (mp4 metadata is a mess) - not webm, because we cannot embed a thumbnail
+--merge-output-format mkv
 # Marking things as watched doesn't seem to work
 #--netrc --mark-watched
 #
